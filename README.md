@@ -196,8 +196,9 @@ The `sources_config.py` file defines the `SOURCE_REGISTRY` which maps each data 
 
 ## Funding
 
-This project has received funding from the European Union's Horizon Europe research and innovation programme under Grant Agreement No. 101091490.
+**Main funding:** Lower Saxony Ministry of Science and Culture (Germany) for the research project "Zukunftslabor Circular Economy".
+**Former funding:** This project has received funding from the European Union's Horizon Europe research and innovation programme under Grant Agreement No. 101091490.
 
 ## Author
 
-Ole Meyer (OFFIS e.V.)
+Ole Meyer (OFFIS e.V.), Alexandra Pehlken (DfKI)
