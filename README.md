@@ -78,7 +78,7 @@ input_data/
 └── tradecodes/              # tradecodetable_array.xlsx
 ```
 
-### 2. Export Results
+### 2. Export Results to CSV
 
 ```bash
 python -m critmat.convert_input_files 
@@ -129,8 +129,7 @@ CritMAT/
 │   ├── calculations/       # HHI calculation functions
 │   │   ├── calc_hhi.py
 │   │   ├── calc_hhi_wgi.py
-│   │   ├── calc_hhi_wgi_tp.py
-│   │   └── eu_supply_risk.py
+│   │   └── calc_hhi_wgi_tp.py
 │   ├── data_processing/    # Data extraction modules
 │   │   ├── get_usgs_myb.py
 │   │   ├── get_usgs_mcs.py
@@ -144,6 +143,7 @@ CritMAT/
 │   │   ├── config.py       # Database configuration
 │   │   ├── populate_database.py
 │   │   └── upload_dataframe.py
+│   ├── convert_input_files.py   # Extract data to csv
 │   ├── sources_config.py   # Source registry
 │   └── upload_input_files.py  # Data ingestion script
 ├── input_data/             # Source data files and seeds
@@ -164,8 +164,8 @@ CritMAT/
 - `fact_materialproduction` - Production by material/country/year
 - `fact_materialtradeflow` - Trade flows with importer/exporter, quantity, value, CN8 codes
 - `fact_countrywgi` - Governance indicators (6 dimensions)
-- `fact_eureport` - EU assessment data (supply risk, economic importance, import reliance)
-- `fact_tradeparameter` - Country-specific trade parameters
+- `fact_eureport` - EU assessment data (supply risk, economic importance, import reliance, etc.)
+- `fact_tradeparameter` - Country-specific trade parameters from EU report
 - `fact_materialproduction_eusource` - EU source mappings
 
 ### Source Registry
@@ -176,21 +176,20 @@ The `sources_config.py` file defines the `SOURCE_REGISTRY` which maps each data 
 ## Development Status
 
 - Core database schema and models implemented
-- Data ingestion pipelines for 6 data sources working
+- Data ingestion pipelines for major data sources working
 - Trade code mapping for Eurostat data implemented
 - Country and material name standardization implemented
 
 **In progress:**
 
-- HHI calculation functions fix (standard, WGI-weighted, trade-parameter weighted)
 - Rework tradecodes handeling 
-- EU Supply risk calculation translation (SQL is working)
+- EU Supply risk calculation translation (From SQL to python)
 
 **Future:**
 
 - Rework production categories (primary/refined)
 - Rework primary keys of base tables to be readable (like ISO3 codes for countries)
-- Implement non-EU trade sources 
+- Implement non-EU trade sources
 - Other Assessment Methods
 
 
