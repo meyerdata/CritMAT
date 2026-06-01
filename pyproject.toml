@@ -1,0 +1,19 @@
+[project]
+name = "critmat"
+version = "0.1.0"
+description = "Critical Material Assessment Toolkit"
+requires-python = ">=3.9"
+dependencies = [
+    "pandas>=2.0",
+    "sqlalchemy>=2.0",
+    "openpyxl>=3.0",
+    "regex",
+    "tabula-py>=1.0",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = {find = {include = ["critmat.*"]}}

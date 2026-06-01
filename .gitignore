@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# IDE
+.vscode/*
+.idea/*
+
+# Data files (user must provide their own)
+*.xlsx
+*.xls
+*.csv
+*.pdf
+*.dat
+files/
+downloads/
+usgs_edgecases/
+data/
+boms/
+temp/
+dev_*
+
+# Except in input_data/seeds/
+!input_data/seeds/*.csv
+
+#This is a temporary file
+!input_data/tradecodes/tradecodetable_array.xlsx
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Jupyter
+notebooks/.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environment (contains secrets)
+.env
+.env.local
+.env.*.local
+
+# OpenCode Tests
+opencode.json

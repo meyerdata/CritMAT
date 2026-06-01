@@ -1,20 +1,20 @@
 # Critical Material Assessment Toolkit (CritMAT)
 
-A Python package for processing and analyzing Critical Raw Materials (CRM) production and trade data. CritMAT extracts, standardizes, and analyzes raw materials data from multiple sources to support supply chain risk assessment and market concentration analysis.
+A Python package for processing and analyzing Critical Raw Material (CRM) data. CritMAT extracts, standardizes, and analyzes raw materials data from multiple sources to support supply chain risk assessment and market concentration analysis.
 
-**Status:** Active development - core data ingestion and analysis functions implemented.
+**Status:** Active development - core data processing and ingestion functions implemented.
 
 ## Features
 
 ### Data Sources
-- **USGS Mineral Yearbook (myb)** - Excel-based annual production data by material and country
-- **WMD** - World Mineral Development data (Excel)
-- **BGS 2025** - British Geological Survey production data (CSV)
-- **Eurostat Trade 2025** - EU trade flow data from Eurostat COMEXT with CN8 product codes
-- **WGI** - World Governance Indicators for 6 governance dimensions
-- **EU Report 2023** - Fifth CRM Assessment extractable parameters (supply risk, economic importance, substitutability, import reliance, end-of-life recycling)
+- **Mineral Yearbook (MYB)** - United States Geological Survey (USGS)
+- **World Mining Data (WMD)** - Austrian Federal Ministry of Finance (BMF) 
+- **World mineral statistics data** - British Geological Survey (BGS)
+- **Comext Inernational trade** - Eurostat European Commission
+- **World Governance Indicators (WGI)** -  World Bank Group
+- **EU Report 2023** - European Commission
 
-### Analysis Functions
+### Analysis Functions (Work in progress)
 - **HHI Calculation** - Herfindahl-Hirschman Index for market concentration
 - **WGI-Weighted HHI** - HHI adjusted for governance risk (penalizes supply from countries with poor governance)
 - **Trade Parameter HHI** - HHI with EU-specific trade dependency factors
@@ -58,7 +58,6 @@ The first command installs the package and dependencies. The second command init
 - sqlalchemy >= 2.0
 - openpyxl >= 3.0
 - regex
-- tabula-py >= 1.0 (for PDF extraction)
 
 **Environment Variables:**
 - `DATABASE_URL` - Database connection string (default: `sqlite:///database/crm.db`)
@@ -76,7 +75,6 @@ input_data/
 ├── bgs/                     # BGS CSV files
 ├── eustat/                  # Eurostat trade data files
 ├── wgi/                     # wgidataset_with_sourcedata-2025.xlsx
-├── eureport/                # 2023 Fifth CRM Assessment.pdf
 └── tradecodes/              # tradecodetable_array.xlsx
 ```
 
@@ -123,8 +121,6 @@ python -m critmat.calculations.calc_hhi
 
 ```
 
-
-
 ## Project Structure
 
 ```
@@ -142,7 +138,6 @@ CritMAT/
 │   │   ├── get_bgs2025.py
 │   │   ├── get_eurostat_trade2025.py
 │   │   ├── get_wgi.py
-│   │   ├── get_eureport.py
 │   │   └── translation.py
 │   ├── database/           # Database layer
 │   │   ├── models.py       # SQLAlchemy models
@@ -163,7 +158,7 @@ CritMAT/
 **Dimension Tables:**
 - `source` - Data source definitions
 - `country` - Country names with EU membership and coordinates
-- `material` - Material names with category and EU usage stage
+- `material` - Material names with type and EU usage stage
 
 **Fact Tables:**
 - `fact_materialproduction` - Production by material/country/year
@@ -177,26 +172,27 @@ CritMAT/
 
 The `sources_config.py` file defines the `SOURCE_REGISTRY` which maps each data source to its processing function, target model, and source-specific parameters (folder paths, publish years, options).
 
-### Data Flow
-
-```
-Raw Data Files → Data Processing Modules → Standardized DataFrames → Database
-                                                                         ↓
-                                    Analysis Functions ← Query Results ← Database Views
-```
 
 ## Development Status
 
 - Core database schema and models implemented
 - Data ingestion pipelines for 6 data sources working
-- HHI calculation functions implemented (standard, WGI-weighted, trade-parameter weighted)
-- EU supply risk calculation implemented
 - Trade code mapping for Eurostat data implemented
 - Country and material name standardization implemented
 
 **In progress:**
-- Additional data validation and error handling
-- Documentation improvements
+
+- HHI calculation functions fix (standard, WGI-weighted, trade-parameter weighted)
+- Rework tradecodes handeling 
+- EU Supply risk calculation translation (SQL is working)
+
+**Future:**
+
+- Rework production categories (primary/refined)
+- Rework primary keys of base tables to be readable (like ISO3 codes for countries)
+- Implement non-EU trade sources 
+- Other Assessment Methods
+
 
 ## Funding
 

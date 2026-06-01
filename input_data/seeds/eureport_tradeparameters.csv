@@ -1,0 +1,122 @@
+material_name,country_name,parameter,category,scope,source_name,date_year
+Aluminium,Guinea,1.1,primary,world,EUREPORT,2025
+Aluminium,India,1.1,primary,world,EUREPORT,2025
+Antimony,China,1.1,primary,world,EUREPORT,2025
+Antimony,Bolivia,1.1,primary,world,EUREPORT,2025
+Baryte,Vietnam,1.1,primary,world,EUREPORT,2025
+Cobalt,DR Congo,1.1,primary,world,EUREPORT,2025
+Cobalt,Zambia,1.1,primary,world,EUREPORT,2025
+Coking Coal,China,1.1,primary,world,EUREPORT,2025
+Coking Coal,Mongolia,1.1,primary,world,EUREPORT,2025
+Copper,China,1.1,primary,world,EUREPORT,2025
+Copper,DR Congo,1.1,primary,world,EUREPORT,2025
+Copper,Zambia,1.1,primary,world,EUREPORT,2025
+Copper,Indonesia,1.2,primary,world,EUREPORT,2025
+Copper,Mongolia,1.2,primary,world,EUREPORT,2025
+Copper,Argentina,1.1,primary,world,EUREPORT,2025
+Fluorspar,Mongolia,1.1,primary,world,EUREPORT,2025
+Gold,Indonesia,1.1,primary,world,EUREPORT,2025
+Iron Ore,China,1.1,primary,world,EUREPORT,2025
+Iron Ore,India,1.1,primary,world,EUREPORT,2025
+Lead,China,1.2,primary,world,EUREPORT,2025
+Lithium,Argentina,1.1,primary,world,EUREPORT,2025
+Natural teak wood,Myanmar,1.5,primary,world,EUREPORT,2025
+Nickel,Indonesia,1.3,primary,world,EUREPORT,2025
+Phosphate Rock,China,1.4,primary,world,EUREPORT,2025
+Potash,Belarus,1.1,primary,world,EUREPORT,2025
+Silver,China,1.1,primary,world,EUREPORT,2025
+Silver,Bolivia,1.1,primary,world,EUREPORT,2025
+"Talc, Steatite & Pyrophyllite",China,1.1,primary,world,EUREPORT,2025
+"Talc, Steatite & Pyrophyllite",Egypt,1.1,primary,world,EUREPORT,2025
+Tantalum,DR Congo,1.1,primary,world,EUREPORT,2025
+Tantalum,Brazil,1.1,primary,world,EUREPORT,2025
+Tin,China,1.1,primary,world,EUREPORT,2025
+Tin,Bolivia,1.1,primary,world,EUREPORT,2025
+Tin,DR Congo,1.1,primary,world,EUREPORT,2025
+Tin,Rwanda,1.1,primary,world,EUREPORT,2025
+Titanium metal,China,1.1,primary,world,EUREPORT,2025
+Titanium metal,Senegal,1.1,primary,world,EUREPORT,2025
+Titanium metal,India,1.1,primary,world,EUREPORT,2025
+Titanium metal,Sierra Leone,1.1,primary,world,EUREPORT,2025
+Titanium,China,1.1,primary,world,EUREPORT,2025
+Titanium,Senegal,1.1,primary,world,EUREPORT,2025
+Titanium,India,1.1,primary,world,EUREPORT,2025
+Titanium,Sierra Leone,1.1,primary,world,EUREPORT,2025
+Tungsten,China,1.1,primary,world,EUREPORT,2025
+Tungsten,Vietnam,1.2,primary,world,EUREPORT,2025
+Tungsten,Russia,1.1,primary,world,EUREPORT,2025
+Tungsten,Bolivia,1.1,primary,world,EUREPORT,2025
+Tungsten,Rwanda,1.1,primary,world,EUREPORT,2025
+Zirconium,China,1.1,primary,world,EUREPORT,2025
+Zirconium,Senegal,1.1,primary,world,EUREPORT,2025
+Zirconium,Sierra Leone,1.1,primary,world,EUREPORT,2025
+Aluminium,China,1.1,refined,world,EUREPORT,2025
+Aluminium,Russia,1.1,refined,world,EUREPORT,2025
+Antimony,China,1.1,refined,world,EUREPORT,2025
+Antimony,Bolivia,1.1,refined,world,EUREPORT,2025
+Chromium,China,1.1,refined,world,EUREPORT,2025
+Chromium,Russia,1.1,refined,world,EUREPORT,2025
+Cobalt,DR Congo,1.1,refined,world,EUREPORT,2025
+Coking Coal,Russia,1.1,refined,world,EUREPORT,2025
+Hafnium,Russia,1.1,refined,world,EUREPORT,2025
+Iron Ore,China,1.1,refined,world,EUREPORT,2025
+Iron Ore,Ukraine,1.1,refined,world,EUREPORT,2025
+Lithium,Argentina,1.1,refined,world,EUREPORT,2025
+Manganese,China,1.1,refined,world,EUREPORT,2025
+Phosphorus,China,1.1,refined,world,EUREPORT,2025
+Platinum,Russia,1.1,refined,world,EUREPORT,2025
+Tin,China,1.5,refined,world,EUREPORT,2025
+Tin,Bolivia,1.1,refined,world,EUREPORT,2025
+Tin,Rwanda,1.1,refined,world,EUREPORT,2025
+Titanium metal,Russia,1.1,refined,world,EUREPORT,2025
+Titanium metal,Ukraine,1.1,refined,world,EUREPORT,2025
+Titanium,Ukraine,1.1,refined,world,EUREPORT,2025
+Titanium,Russia,1.1,refined,world,EUREPORT,2025
+Tungsten,Vietnam,1.1,refined,world,EUREPORT,2025
+Aluminium,Guinea,1.1,primary,eu,EUREPORT,2025
+Antimony,Bolivia,1.1,primary,eu,EUREPORT,2025
+Antimony,China,1.1,primary,eu,EUREPORT,2025
+Copper,Indonesia,1.2,primary,eu,EUREPORT,2025
+Copper,Argentina,1.1,primary,eu,EUREPORT,2025
+Phosphate Rock,Senegal,0.8,primary,eu,EUREPORT,2025
+Potash,Russia,0.8,primary,eu,EUREPORT,2025
+Potash,Belarus,0.8,primary,eu,EUREPORT,2025
+Potash,Canada,0.8,primary,eu,EUREPORT,2025
+Sapele wood,DR Congo,0.8,primary,eu,EUREPORT,2025
+Silver,Mexico,0.8,primary,eu,EUREPORT,2025
+Silver,Argentina,0.8,primary,eu,EUREPORT,2025
+Silver,Peru,0.8,primary,eu,EUREPORT,2025
+Silver,Bolivia,0.8,primary,eu,EUREPORT,2025
+"Talc, Steatite & Pyrophyllite",Australia,0.8,primary,eu,EUREPORT,2025
+Tin,Russia,0.8,primary,eu,EUREPORT,2025
+Tin,United States,0.8,primary,eu,EUREPORT,2025
+Tin,Thailand,0.8,primary,eu,EUREPORT,2025
+Tin,Argentina,0.8,primary,eu,EUREPORT,2025
+Titanium,Zambia,0.8,primary,eu,EUREPORT,2025
+Titanium,Norway,0.8,primary,eu,EUREPORT,2025
+Titanium,Mozambique,1.1,primary,eu,EUREPORT,2025
+Titanium,Ukraine,0.8,primary,eu,EUREPORT,2025
+Titanium,Australia,0.8,primary,eu,EUREPORT,2025
+Titanium,Sierra Leone,0.8,primary,eu,EUREPORT,2025
+Zinc,Türkiye,1.1,primary,eu,EUREPORT,2025
+Zinc,Burkina Faso,0.8,primary,eu,EUREPORT,2025
+Zinc,Namibia,0.8,primary,eu,EUREPORT,2025
+Zinc,North Macedonia,0.8,primary,eu,EUREPORT,2025
+Zirconium,Morocco,1.1,primary,eu,EUREPORT,2025
+Zirconium,Indonesia,0.8,primary,eu,EUREPORT,2025
+Aluminium,Russia,1.1,refined,eu,EUREPORT,2025
+Antimony,China,1.1,refined,eu,EUREPORT,2025
+Antimony,Bolivia,1.1,refined,eu,EUREPORT,2025
+Chromium,Russia,1.1,refined,eu,EUREPORT,2025
+Cobalt,DR Congo,1.1,refined,eu,EUREPORT,2025
+Coking Coal,Russia,1.1,refined,eu,EUREPORT,2025
+Hafnium,Russia,1.1,refined,eu,EUREPORT,2025
+Iron Ore,Ukraine,1.1,refined,eu,EUREPORT,2025
+Lithium,Argentina,1.1,refined,eu,EUREPORT,2025
+Phosphorus,China,1.1,refined,eu,EUREPORT,2025
+Tin,Bolivia,1.1,refined,eu,EUREPORT,2025
+Tin,China,1.492,refined,eu,EUREPORT,2025
+Titanium metal,Russia,1.1,refined,eu,EUREPORT,2025
+Titanium metal,Ukraine,1.1,refined,eu,EUREPORT,2025
+Titanium,Russia,1.1,refined,eu,EUREPORT,2025
+Tungsten,Vietnam,1.1,refined,eu,EUREPORT,2025

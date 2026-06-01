@@ -1,0 +1,111 @@
+material_name,category,source_name
+Aggregates,primary,BGS
+Aluminium,primary,WMD
+Aluminium,refined,WMD
+Antimony,primary,WMD
+Arsenic,primary,USGS_myb
+Arsenic,refined,WMD
+Baryte,primary,WMD
+Bentonite,primary,WMD
+Beryllium,primary,WMD
+Bismuth,refined,WMD
+Boron,primary,WMD
+Boron,refined,USGS_myb
+Cadmium,refined,WMD
+Cerium,primary,USGS_myb
+Cerium,refined,WMD
+Chromium,primary,BGS
+Chromium,refined,USGS_myb
+Cobalt,primary,WMD
+Cobalt,refined,BGS
+Coking Coal,primary,WMD
+Copper,primary,WMD
+Copper,refined,BGS
+Diatomite,primary,BGS
+Dysprosium,primary,USGS_myb
+Dysprosium,refined,EUREPORT
+Erbium,primary,USGS_myb
+Erbium,refined,EUREPORT
+Europium,primary,USGS_myb
+Europium,refined,EUREPORT
+Feldspar,primary,WMD
+Fluorspar,primary,WMD
+Gadolinium,primary,USGS_myb
+Gadolinium,refined,EUREPORT
+Gallium,primary,USGS_myb
+Gallium,refined,WMD
+Germanium,refined,WMD
+Gold,primary,BGS
+Gypsum,primary,WMD
+Helium,primary,USGS_myb
+Holmium,primary,USGS_myb
+Holmium,refined,EUREPORT
+Indium,refined,WMD
+Iridium,refined,BGS
+Iron Ore,primary,BGS
+Iron Ore,refined,USGS_myb
+Kaolin,primary,BGS
+Lanthanum,primary,USGS_myb
+Lanthanum,refined,WMD
+Lead,primary,BGS
+Lead,refined,BGS
+Lime,primary,USGS_myb
+Lithium,primary,WMD
+Lutetium,primary,USGS_myb
+Lutetium,refined,EUREPORT
+Magnesite,primary,WMD
+Magnesium,refined,BGS
+Manganese,primary,BGS
+Manganese,refined,USGS_myb
+Molybdenum,primary,WMD
+Natural graphite,primary,WMD
+Neodymium,primary,USGS_myb
+Neodymium,refined,WMD
+Nickel,primary,BGS
+Nickel,refined,USGS_myb
+Niobium,primary,WMD
+Palladium,primary,USGS_myb
+Palladium,refined,BGS
+Perlite,primary,WMD
+Phosphate Rock,primary,WMD
+Platinum,primary,USGS_myb
+Platinum,refined,BGS
+Potash,primary,WMD
+Praseodymium,primary,USGS_myb
+Praseodymium,refined,WMD
+Rhenium,primary,WMD
+Rhodium,refined,BGS
+Ruthenium,refined,BGS
+Samarium,primary,USGS_myb
+Samarium,refined,WMD
+Selenium,primary,USGS_myb
+Selenium,refined,WMD
+Silica sand,primary,USGS_myb
+Silicon Metal,primary,USGS_myb
+Silicon Metal,refined,BGS
+Silver,primary,WMD
+Strontium,primary,BGS
+Sulfur,primary,USGS_myb
+Sulfur,refined,WMD
+"Talc, Steatite & Pyrophyllite",primary,BGS
+Tantalum,primary,WMD
+Tellurium,primary,USGS_myb
+Tellurium,refined,WMD
+Terbium,primary,USGS_myb
+Terbium,refined,EUREPORT
+Thulium,primary,USGS_myb
+Thulium,refined,EUREPORT
+Tin,primary,WMD
+Tin,refined,BGS
+Titanium,primary,WMD
+Titanium Metal,primary,BGS
+Tungsten,primary,WMD
+Tungsten,refined,BGS
+Vanadium,primary,WMD
+Ytterbium,primary,USGS_myb
+Ytterbium,refined,EUREPORT
+Yttrium,primary,USGS_myb
+Yttrium,refined,EUREPORT
+Zinc,primary,WMD
+Zinc,refined,BGS
+Zirconium,primary,USGS_myb

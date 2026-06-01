@@ -1,0 +1,92 @@
+material_name,supply_risk,economic_importance,eu_used_stage,eu_stages,eu_used_supply_primary,supply_risk_primary,eu_used_supply_refined,supply_risk_refined,si_ei,si_sr,import_reliance_primary,import_reliance_refined,end_of_life,source_name,publish_year,date_year
+Aggregates,0.2,3.2,Extraction,E,EUonly,0.2,,,1.00,1.0,1,,9,EUREPORT,2025,2025
+Aluminium,1.2,5.8,Extraction,E+P,GS+EU,1.2,GS+EU,0.5,0.82,0.86,89,58,32,EUREPORT,2025,2025
+Antimony,1.8,5.4,Extraction,E+P,GS+EU,1.8,GS+EU,0.7,0.92,0.94,100,47,28,EUREPORT,2025,2025
+Arsenic,1.9,2.9,Processing,P,,,GS+EU,1.9,0.86,0.96,,39,0,EUREPORT,2025,2025
+Baryte,1.3,3.5,Extraction,E,GS+EU,1.3,,,0.87,0.92,74,,0,EUREPORT,2025,2025
+Bentonite,0.4,3.1,Extraction,E,GS+EU,0.4,,,0.88,0.89,16,,19,EUREPORT,2025,2025
+Beryllium,1.8,5.4,Extraction,E+P,GSonly,1.8,GS+EU,1.2,0.99,0.99,,100,0,EUREPORT,2025,2025
+Bismuth,1.9,5.7,Processing,P,,,GS+EU,1.9,0.95,0.92,,71,0,EUREPORT,2025,2025
+Boron,3.6,3.9,Extraction,E+P,GS+EU,3.6,GS+EU,1.4,0.99,0.99,100,70,1,EUREPORT,2025,2025
+Cadmium,0.2,4.1,Processing,P,,,GS+EU,0.2,0.92,0.9,,8,30,EUREPORT,2025,2025
+Chromium,0.7,7.2,Extraction,E+P,GS+EU,0.7,GS+EU,0.6,0.93,0.93,7,42,21,EUREPORT,2025,2025
+Cobalt,2.8,6.8,Extraction,E+P,GSonly,2.8,GS+EU,0.5,0.97,0.98,81,1,22,EUREPORT,2025,2025
+Coking coal,1.0,3.1,Extraction,E+P,GS+EU,,1.0,0.4,1.00,1.0,66,0,0,EUREPORT,2025,2025
+Copper,0.1,4.0,Extraction,E+P,GS+EU,0.1,GS+EU,0.1,0.70,0.71,48,17,55,EUREPORT,2025,2025
+Diatomite,0.3,2.3,Extraction,E,GS+EU,,0.3,,0.91,0.9,0,,4,EUREPORT,2025,2025
+Feldspar,1.5,3.2,Extraction,E,GS+EU,1.5,,,0.99,0.99,54,,1,EUREPORT,2025,2025
+Fluorspar,1.1,3.8,Extraction,E,GS+EU,1.1,,,0.91,0.91,60,,1,EUREPORT,2025,2025
+Gallium,3.9,3.7,Processing,P,,,GS+EU,3.9,0.98,0.98,,98,0,EUREPORT,2025,2025
+Germanium,1.8,3.6,Processing,P,,,GS+EU,1.8,0.92,0.94,,42,2,EUREPORT,2025,2025
+Gold,0.4,2.4,Extraction,E,GS+EU,0.4,,,0.98,0.99,0,,5,EUREPORT,2025,2025
+Gypsum,0.6,2.7,Extraction,E,GS+EU,0.6,,,0.86,0.95,0,,1,EUREPORT,2025,2025
+Hafnium,1.5,4.3,Processing,P,,,EUonly,1.5,0.91,0.96,,0,0,EUREPORT,2025,2025
+Helium,1.2,2.9,Processing,P,,,GS+EU,1.2,0.94,0.97,,94,2,EUREPORT,2025,2025
+HREE,5.1,4.2,Processing,E+P,GS+EU,2.3,GSonly,5.1,,,100,100,1,EUREPORT,2025,2025
+Dysprosium,5.6,7.8,Processing,E+P,GS+EU,5.3,GSonly,5.6,0.98,0.99,80,100,1,EUREPORT,2025,2025
+Erbium,5.6,3.5,Processing,E+P,GS+EU,2.2,GSonly,5.6,1.00,1.0,80,100,1,EUREPORT,2025,2025
+Europium,5.6,3.3,Processing,E+P,GS+EU,2.2,GSonly,5.6,1.00,1.0,80,100,1,EUREPORT,2025,2025
+Gadolinium,3.3,3.3,Processing,E+P,GS+EU,1.1,GSonly,3.3,0.59,0.59,80,100,1,EUREPORT,2025,2025
+Holmium,5.6,3.2,Processing,E+P,GS+EU,2.2,GSonly,5.6,1.00,1.0,80,100,1,EUREPORT,2025,2025
+Lutetium,5.6,5.0,Processing,E+P,GS+EU,2.2,GSonly,5.6,1.00,1.0,80,100,1,EUREPORT,2025,2025
+Terbium,4.9,6.4,Processing,E+P,GS+EU,2.5,GSonly,4.9,0.84,0.92,80,100,1,EUREPORT,2025,2025
+Thulium,5.6,3.2,Processing,E+P,GS+EU,2.2,GSonly,5.6,1.00,1.0,80,100,1,EUREPORT,2025,2025
+Ytterbium,5.6,3.2,Processing,E+P,GS+EU,2.2,GSonly,5.6,1.00,1.0,80,100,1,EUREPORT,2025,2025
+Yttrium,3.5,2.9,Processing,E+P,GS+EU,1.4,GSonly,3.5,0.90,0.9,100,100,1,EUREPORT,2025,2025
+Hydrogen,0.5,2.9,Extraction,E+P,GS+EU,0.5,EUonly,0.3,0.81,0.81,56,0,0,EUREPORT,2025,2025
+Indium,0.6,2.6,Processing,P,,,GS+EU,0.6,0.87,0.89,,11,1,EUREPORT,2025,2025
+Iron ore,0.5,7.2,Extraction,E+P,GS+EU,0.5,GS+EU,0.2,0.92,0.95,77,5,31,EUREPORT,2025,2025
+Kaolin,0.8,2.8,Extraction,E+P,GS+EU,0.8,GS+EU,0.5,0.92,0.95,28,11,31,EUREPORT,2025,2025
+Krypton,0.7,3.3,Processing,P,,,EUonly,0.7,0.96,0.98,,0,0,EUREPORT,2025,2025
+Lead,0.1,4.2,Extraction,E+P,GS+EU,0.1,GS+EU,0.0,0.94,0.99,21,6,83,EUREPORT,2025,2025
+Lime,0.3,3.6,Extraction,E,EUonly,0.3,,,0.99,0.99,0,,1,EUREPORT,2025,2025
+Lithium,1.9,3.9,Processing,E+P,GSonly,0.8,GS+EU,1.9,0.91,0.94,81,100,0,EUREPORT,2025,2025
+LREE,3.7,5.9,Processing,E+P,GS+EU,281%,GS+EU,3.58,,,80,100,1,EUREPORT,2025,2025
+Cerium,4.0,4.9,Processing,E+P,GSonly,3.9,GSonly,4.0,0.93,0.97,100,100,1,EUREPORT,2025,2025
+Lanthanum,3.5,2.9,Processing,E+P,GS+EU,2.0,GS+EU,3.5,0.92,0.97,100,100,1,EUREPORT,2025,2025
+Neodymium,4.5,7.2,Extraction,E+P,GS+EU,4.5,GS+EU,3.7,0.97,0.99,80,100,1,EUREPORT,2025,2025
+Praseodymium,3.2,7.0,Processing,E+P,GS+EU,1.8,GS+EU,,0.96,0.98,80,100,1,EUREPORT,2025,2025
+Samarium,3.5,7.7,Processing,E+P,GS+EU,2.0,GS+EU,3.5,0.98,0.98,80,100,1,EUREPORT,2025,2025
+Magnesite,0.6,3.6,Extraction,E,EUonly,,0.6,,0.98,0.99,0,,2,EUREPORT,2025,2025
+Magnesium,4.1,7.4,Processing,P,,,GS+EU,4.1,0.94,0.94,,100,13,EUREPORT,2025,2025
+Manganese,1.2,6.9,Extraction,E+P,GS+EU,1.2,GS+EU,1.0,1.00,1.0,96,66,9,EUREPORT,2025,2025
+Molybdenum,0.8,6.7,Extraction,E+P,GS+EU,0.8,EU,0.2,1.00,1.0,100,100,30,EUREPORT,2025,2025
+Natural cork,0.9,1.7,Extraction,E,EUonly,,0.9,,0.91,0.91,0,,8,EUREPORT,2025,2025
+Natural graphite,1.8,3.4,Extraction,E,GS+EU,1.8,,,0.97,0.98,99,,3,EUREPORT,2025,2025
+Natural Rubber,0.9,6.0,Extraction,E,GS+EU,0.9,,,0.80,0.9,100,,2,EUREPORT,2025,2025
+Natural Teak wood,1.7,2.4,Extraction,E,GS+EU,1.7,,,0.96,0.96,100,,5,EUREPORT,2025,2025
+Neon,0.7,3.1,Processing,P,,,EUonly,0.7,0.95,0.96,,0,0,EUREPORT,2025,2025
+Nickel,0.5,5.7,Processing,E+P,GS+EU,0.4,GS+EU,0.5,0.88,0.92,31,75,16,EUREPORT,2025,2025
+Niobium,4.4,6.5,Extraction,E+P,GSonly,4.4,GS+EU,3.8,0.93,0.96,,100,0,EUREPORT,2025,2025
+Perlite,0.8,2.5,Extraction,E,GSonly,0.8,,,0.88,0.92,0,,42,EUREPORT,2025,2025
+PGM,2.7,7.1,Processing,P,,,GSonly,2.74,,,,100,12,EUREPORT,2025,2025
+Iridium,3.9,6.4,Processing,P,,,GSonly,3.9,0.94,0.97,,100,12,EUREPORT,2025,2025
+Palladium,1.5,8.1,Processing,P,,,GSonly,1.5,0.92,0.99,,100,12,EUREPORT,2025,2025
+Platinum,2.13,6.9,Processing,P,,,GSonly,2.1,0.96,0.95,,100,12,EUREPORT,2025,2025
+Rhodium,2.4,8.6,Processing,P,,,GSonly,2.4,0.99,1.0,,100,12,EUREPORT,2025,2025
+Ruthenium,3.8,5.5,Processing,P,,,GSonly,3.8,0.94,0.94,,100,12,EUREPORT,2025,2025
+Phosphate rock,1.0,6.4,Extraction,E,GS+EU,1.0,,,0.96,0.99,82,,0,EUREPORT,2025,2025
+Phosphorus,3.3,4.7,Processing,P,,,GS+EU,3.3,0.95,0.98,,100,0,EUREPORT,2025,2025
+Potash,0.7,6.2,Extraction,E,GS+EU,0.7,,,0.95,0.98,33,,0,EUREPORT,2025,2025
+Rhenium,0.5,2.3,Processing,P,,,GSonly,0.5,0.98,0.99,,92,50,EUREPORT,2025,2025
+Roundwood,0.1,1.2,Extraction,E,GS+EU,0.1,,,0.79,0.82,0,,20,EUREPORT,2025,2025
+Sapele wood,1.3,1.6,Extraction,E,GS+EU,1.3,,,0.96,0.97,100,,7,EUREPORT,2025,2025
+Scandium,2.4,3.7,Processing,P,,,GSonly,2.4,0.86,0.87,,100,0,EUREPORT,2025,2025
+Selenium,0.3,4.8,Processing,P,,,GS+EU,0.3,0.90,0.94,,2,1,EUREPORT,2025,2025
+Silica Sand,0.3,3.1,Extraction,E,GS+EU,0.3,,,,,0,,1,EUREPORT,2025,2025
+Silicon metal,1.4,4.9,Processing,P,,,GS+EU,1.4,0.99,0.99,,64,0,EUREPORT,2025,2025
+Silver,0.8,4.6,Extraction,E,GS+EU,0.8,,,0.97,0.99,5,,4,EUREPORT,2025,2025
+Strontium,2.6,6.5,Extraction,E,GS+EU,,2.6,,0.98,0.97,0,,0,EUREPORT,2025,2025
+Sulfur,0.3,5.0,Processing,P,,,EUonly,0.3,0.99,0.99,,0,0,EUREPORT,2025,2025
+"Talc, Steatite & Pyrophyllite",0.2,3.3,Extraction,E,GS+EU,0.2,,,0.71,0.71,7,,16,EUREPORT,2025,2025
+Tantalum,1.3,4.8,Extraction,E,GS+EU,1.3,,,0.96,0.98,99,,1,EUREPORT,2025,2025
+Tellurium,0.3,3.8,Processing,P,,,GS+EU,0.3,0.87,0.94,,0,1,EUREPORT,2025,2025
+Tin,0.9,4.5,Processing,E+P,GS+EU,0.5,GS+EU,0.9,0.90,0.92,0,73,31,EUREPORT,2025,2025
+Titanium,0.5,5.4,Extraction,E+P,GS+EU,0.5,GS+EU,0.4,0.92,0.95,100,18,1,EUREPORT,2025,2025
+Titanium metal,1.6,6.3,Processing,E+P,GS+EU,0.5,GS+EU,1.6,1.00,1.0,,100,1,EUREPORT,2025,2025
+Tungsten,1.2,8.7,Processing,E+P,GS+EU,0.5,GS+EU,1.2,0.95,0.96,21,80,42,EUREPORT,2025,2025
+Tungsten,1.2,8.7,Processing,E+P,GS+EU,0.5,GS+EU,1.2,0.95,0.96,21,80,42,EUREPORT,2025,2025
+Vanadium,2.3,3.9,Extraction,E+P,GSonly,2.3,GS+EU,1.7,0.90,0.92,0,100,6,EUREPORT,2025,2025
+Xenon,0.8,3.1,Processing,P,,,GS+EU,0.8,0.98,0.99,,0,0,EUREPORT,2025,2025
+Zinc,0.2,4.8,Extraction,E+P,GS+EU,0.2,EUonly,0.1,0.77,0.8,56,0,34,EUREPORT,2025,2025
+Zirconium,0.8,3.5,Extraction,E,GS+EU,0.8,,,0.96,0.97,100,,12,EUREPORT,2025,2025

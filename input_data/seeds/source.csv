@@ -1,0 +1,9 @@
+name,full_name,priority,type,access
+WB,World Bank: World Governance Indicators,1,Excel,https://www.worldbank.org/en/publication/worldwide-governance-indicators
+USGS_myb,U.S. Geological Survey,2,Excel,https://www.sciencebase.gov/catalog/item/63b5f411d34e92aad3caa57f
+USGS_mcs,U.S. Geological Survey ,2,Excel (Commodity specific),https://www.usgs.gov/centers/national-minerals-information-center/commodity-statistics-and-information
+EUREPORT,EU CRM Report 2023,0,Pdf,https://single-market-economy.ec.europa.eu/publications/study-critical-raw-materials-eu-2023-final-report_en
+EUST,Eurostat (COMEXT),0,Datafiles,https://ec.europa.eu/eurostat/databrowser/bulk?lang=en&selectedTab=fileComext
+WMD,World Mining Data,1,Excel,https://www.world-mining-data.info/?World_Mining_Data___Data_Section
+BACI,CEPII (BACI),1,Excel,https://www.cepii.fr/CEPII/en/bdd_modele/bdd_modele_item.asp?id=37
+BGS,British Geological Survey,0,Excel,https://www2.bgs.ac.uk/mineralsuk/data-download/wms.cfc?method=searchWMS

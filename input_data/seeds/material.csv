@@ -1,0 +1,84 @@
+name,category,isrmis,eu_used_stage
+Aluminium,Other non-ferrous metals,True,primary
+Antimony,Other non-ferrous metals,True,primary
+Arsenic,Other non-ferrous metals,True,refined
+Baryte,Industrial and construction minerals,True,primary
+Bentonite,Industrial and construction minerals,True,primary
+Beryllium,Other non-ferrous metals,True,primary only global
+Bismuth,Other non-ferrous metals,True,refined
+Boron,,True,primary
+Cadmium,Other non-ferrous metals,True,refined
+Cerium,LREE,True,refined only global
+Chromium,Iron and ferro-alloy metals,True,primary
+Cobalt,Iron and ferro-alloy metals,True,primary only global
+Coking Coal,Bio and other materials,True,primary
+Copper,Other non-ferrous metals,True,primary
+Diatomite,Industrial and construction minerals,True,primary
+Dysprosium,HREE,True,refined only global
+Erbium,HREE,True,refined only global
+Europium,HREE,True,refined only global
+Feldspar,Industrial and construction minerals,True,primary
+Fluorspar,Industrial and construction minerals,True,primary
+Gadolinium,HREE,True,refined only global
+Gallium,Other non-ferrous metals,True,refined
+Germanium,Other non-ferrous metals,True,refined
+Gold,Precious Metals,True,primary
+Gypsum,Industrial and construction minerals,True,primary
+Hafnium,Other non-ferrous metals,True,refined only EU
+Helium,Bio and other materials,True,refined
+Holmium,HREE,True,refined only global
+Hydrogen,Bio and other materials,True,primary
+Indium,Other non-ferrous metals,True,refined
+Iridium,Platinum Metals,True,refined only global
+Iron Ore,,True,primary
+Kaolin,Industrial and construction minerals,True,primary
+Lanthanum,LREE,True,refined only global
+Lead,Other non-ferrous metals,True,primary
+Lime,Industrial and construction minerals,True,primary only EU
+Lithium,Other non-ferrous metals,True,refined
+Lutetium,HREE,True,refined only global
+Magnesite,Industrial and construction minerals,True,primary only EU
+Magnesium,Other non-ferrous metals,True,refined
+Manganese,Iron and ferro-alloy metals,True,primary
+Molybdenum,Iron and ferro-alloy metals,True,primary
+Natural cork,Bio and other materials,True,primary only EU
+Natural graphite,Industrial and construction minerals,True,primary
+Natural rubber,Bio and other materials,True,primary
+Natural teak wood,Bio and other materials,True,primary
+Neodymium,LREE,True,primary only global
+Nickel,Iron and ferro-alloy metals,True,refined
+Niobium,Iron and ferro-alloy metals,True,primary only global
+Palladium,Platinum Metals,True,refined only global
+Perlite,Industrial and construction minerals,True,primary only global
+Phosphate Rock,Industrial and construction minerals,True,primary
+Phosphorus,Industrial and construction minerals,True,refined
+Platinum,Platinum Metals,True,refined only global
+Potash,Industrial and construction minerals,True,primary
+Praseodymium,LREE,True,refined only global
+Rhenium,Other non-ferrous metals,True,primary only global
+Rhodium,Platinum Metals,True,refined only global
+Ruthenium,Platinum Metals,True,refined only global
+Samarium,LREE,True,refined only global
+Sapele wood,Bio and other materials,True,primary
+Scandium,,True,refined only EU
+Selenium,Other non-ferrous metals,True,refined
+Silica sand,Industrial and construction minerals,True,primary
+Silicon Metal,Other non-ferrous metals,True,refined
+Silver,Precious Metals,True,primary
+Strontium,Other non-ferrous metals,True,primary only EU
+Sulfur,Industrial and construction minerals,True,refined only EU
+"Talc, Steatite & Pyrophyllite",,True,primary
+Tantalum,Iron and ferro-alloy metals,True,primary
+Tellurium,Other non-ferrous metals,True,refined
+Terbium,HREE,True,refined only global
+Thulium,HREE,True,refined only global
+Tin,Other non-ferrous metals,True,refined
+Titanium,Iron and ferro-alloy metals,True,primary
+Titanium Metal,Iron and ferro-alloy metals,True,refined
+Tungsten,Iron and ferro-alloy metals,True,refined
+Vanadium,Iron and ferro-alloy metals,True,primary only global
+Ytterbium,HREE,True,refined only global
+Yttrium,HREE,True,refined
+Zinc,Other non-ferrous metals,True,primary
+Zirconium,Other non-ferrous metals,True,primary
+Aggregates,Industrial and construction minerals,True,primary only EU
