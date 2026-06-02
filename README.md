@@ -62,6 +62,25 @@ The first command installs the package and dependencies. The second command init
 **Environment Variables:**
 - `DATABASE_URL` - Database connection string (default: `sqlite:///database/crm.db`)
 
+## Quickstart
+
+**Recommended files needed for a trial:**
+- Download `6.4.Production of Mineral Raw Materials...` from [World Mining Data](https://www.world-mining-data.info/?World_Mining_Data___Data_Section) → copy to `input_data/wmd/`
+
+- Run 
+```bash
+python -m critmat.upload_input_files
+python -m critmat.calculations.calc_hhi
+```
+
+- *(Optional)* Download `Governance Estimates and Absolute Scores...` from [World Bank](https://www.worldbank.org/en/publication/worldwide-governance-indicators) → copy to `input_data/wgi/`
+
+- Run 
+```bash
+python -m critmat.upload_input_files
+python -m critmat.calculations.calc_hhi_wgi
+```
+
 ## Usage
 
 ### 1. Prepare Data Files
