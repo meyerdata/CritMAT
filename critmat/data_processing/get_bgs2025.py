@@ -3,7 +3,8 @@ import pandas as pd
 import warnings
 from critmat.data_processing.translation import *
 '''
-This function processes BGS API files and returns a DataFrame with translated material names and categories.
+This function processes publicly available BGS API files and returns a DataFrame with translated material names and categories.
+For more information on the data itself see BGS_Readme.md in the input_data directory.
 '''
 
 def get_bgs2025(folder,source,publish_year,fetch_from_web=False,db_out=True):

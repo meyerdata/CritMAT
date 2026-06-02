@@ -5,6 +5,9 @@ import numpy as np
 import pandas as pd
 from critmat.data_processing.translation import *
 from openpyxl.styles import Alignment
+'''
+A collection of fuctions essential for processing the USGS Mineral Yearbook data using the get_usgs_myb function.
+'''
 
 def extract_title_info(wb,sheet):
     """Extract all title-related information from a sheet.

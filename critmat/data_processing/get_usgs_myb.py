@@ -6,6 +6,10 @@ import pandas as pd
 from critmat.data_processing.translation import *
 from openpyxl.styles import Alignment
 from critmat.data_processing.get_usgs_myb_helpers import *
+'''
+This function processes the USGS Mineral Yearbook data, which is publicly available on the USGS website.
+For more information on the data itself see USGS_Readme.md in the input_data directory.
+'''
 
 def get_usgs_myb(folder,source,load_temp=False,db_out=False,testing=False,cut_outdated=False,cut_subtotal=False):
     '''Converts the entire usgs archive files (provide path and source string) to one dataframe. The files have to be xlsx, not xls (see xls2xlsx).''' 

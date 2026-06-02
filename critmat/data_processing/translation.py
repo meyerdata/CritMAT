@@ -2,8 +2,9 @@ import regex as re
 import numpy as np
 import pandas as pd
 
-# standardize, understand_units, convert_to_t, standard_material_names, standard_country_names
-
+'''
+This script contains functions to standardize country and material names and to convert units.
+'''
 def standardize(data,ccodes=False,cnames=False,material=False,quantity_to_t=False,output=False):
     '''Takes a dataframe and can standardize any number of the following columns:
     "country_name", "material_name", "production_primary(_unit)", "production_refined(_unit)", "reserves(_unit)". 

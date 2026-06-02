@@ -2,12 +2,11 @@ import os
 import numpy as np
 import pandas as pd
 from critmat.data_processing.translation import *
+'''
+Conversion script for the EU's trade flow data publicly available from Eurostat.
+For more information on the data itself see Eustat_Readme.md in the input_data directory.
+'''
 
-# Code to loop over all files from the EU's observation period (~5y) and return
-# a dictionary with a dataframe of supply information for each material. p
-# https://ec.europa.eu/eurostat/databrowser/bulk?lang=en&selectedTab=fileComext&breadcrumbFilter=COMEXT_DATA%2FPREFERENCES
-# These files are yearly trade flows as declared by an EU country: what partner,
-# what product (material), how much (quantity and value) was imported. 
 def get_eurostat_trade2025(folder_path,code_file,source,publish_year,load_temp=False,testing=False):
     #load_temp lets you skip the processing of the orinignal source files and load the latest output
     if load_temp:
