@@ -93,12 +93,12 @@ Place your source data files in the appropriate `input_data/` subdirectories:
 
 ```
 input_data/
-├── usgs/                    # USGS Excel files (organized by material/year)
-├── wmd/                     # WMD2025 Commodities 1984-2023.xlsx
-├── bgs/                     # BGS CSV files
-├── eustat/                  # Eurostat trade data files
-├── wgi/                     # wgidataset_with_sourcedata-2025.xlsx
-└── tradecodes/              # tradecodetable_array.xlsx
+├── usgs/                    # USGS Excel files (organized in material subfolders)
+├── wmd/                     # WMD Excel files
+├── bgs/                     # BGS API CSV files
+├── eustat/                  # Eurostat trade dat files
+├── wgi/                     # WGI excel files
+└── tradecodes/              # Tradecode excel files
 ```
 
 ### 2. Export Results to CSV
