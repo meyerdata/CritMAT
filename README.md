@@ -73,7 +73,7 @@ The first command installs the package and dependencies. The second command init
 
 - Run 
 ```bash
-python -m critmat.upload_input_files
+python -m critmat.upload_input_files --sources wmd
 python -m critmat.calculations.calc_hhi
 ```
 
@@ -81,7 +81,7 @@ python -m critmat.calculations.calc_hhi
 
 - Run 
 ```bash
-python -m critmat.upload_input_files
+python -m critmat.upload_input_files --sources wgi
 python -m critmat.calculations.calc_hhi_wgi
 ```
 
