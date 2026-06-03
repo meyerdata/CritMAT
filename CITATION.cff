@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "Critical Material Assessment Toolkit (CritMAT)"
+doi: "10.5281/zenodo.20489684"
+url: "https://github.com/meyerdata/CritMAT"
+repository-code: "https://github.com/meyerdata/CritMAT.git"
+license: MIT
+authors:
+  - family-names: "Meyer"
+    given-names: "Ole"
+    affiliation: "OFFIS e.V."
+    orcid: "https://orcid.org/0000-0002-9964-5591"
+  - family-names: "Pehlken"
+    given-names: "Alexandra"
+    affiliation: "DfKI"
+    orcid: "https://orcid.org/0000-0003-1798-8679"
+
+keywords:
+  - critical raw materials
+  - supply chain risk
+  - market concentration
+  - CRM
+  - supply chain assessment
+
+abstract: >
+  CritMAT is a Python package for processing and analyzing Critical Raw Material (CRM) data.
+  It extracts, standardizes, and analyzes raw materials data from multiple sources to support
+  supply chain risk assessment and market concentration analysis.

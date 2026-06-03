@@ -1,6 +1,6 @@
 [project]
 name = "critmat"
-version = "0.1.0"
+version = "1.0.0"
 description = "Critical Material Assessment Toolkit"
 requires-python = ">=3.9"
 dependencies = [
