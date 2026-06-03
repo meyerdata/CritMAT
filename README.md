@@ -73,7 +73,7 @@ The first command installs the package and dependencies. The second command init
 
 - Run 
 ```bash
-python -m critmat.upload_input_files
+python -m critmat.upload_input_files --sources wmd
 python -m critmat.calculations.calc_hhi
 ```
 
@@ -81,7 +81,7 @@ python -m critmat.calculations.calc_hhi
 
 - Run 
 ```bash
-python -m critmat.upload_input_files
+python -m critmat.upload_input_files --sources wgi
 python -m critmat.calculations.calc_hhi_wgi
 ```
 
@@ -93,12 +93,12 @@ Place your source data files in the appropriate `input_data/` subdirectories:
 
 ```
 input_data/
-├── usgs/                    # USGS Excel files (organized by material/year)
-├── wmd/                     # WMD2025 Commodities 1984-2023.xlsx
-├── bgs/                     # BGS CSV files
-├── eustat/                  # Eurostat trade data files
-├── wgi/                     # wgidataset_with_sourcedata-2025.xlsx
-└── tradecodes/              # tradecodetable_array.xlsx
+├── usgs/                    # USGS Excel files (organized in material subfolders)
+├── wmd/                     # WMD Excel files
+├── bgs/                     # BGS API CSV files
+├── eustat/                  # Eurostat trade dat files
+├── wgi/                     # WGI excel files
+└── tradecodes/              # Tradecode excel files
 ```
 
 ### 2. Export Results to CSV
