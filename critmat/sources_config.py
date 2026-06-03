@@ -12,11 +12,11 @@ SOURCE_REGISTRY = {
         'prepare_fn': None,
     },
     'wmd': {
-        'folder': 'input_data/wmd/WMD2025 Commodities 1984-2023.xlsx',
-        'get_fn': ('get_wmd_full', 'critmat.data_processing'),
+        'folder': 'input_data/wmd/',
+        'get_fn': ('get_wmd', 'critmat.data_processing'),
         'target_model': FactMaterialProduction,
         'source_name': 'WMD',
-        'year': 2025,
+        'publish_year': 2025,
         'prepare_fn': None,
     },
     'bgs': {
