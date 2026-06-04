@@ -24,4 +24,5 @@ def get_wgi(file, source, publish_year):
     outdf['publish_year'] = publish_year
     outdf = standardize(outdf,ccodes=True) 
 
-    return outdf
+    return outdf, None #The second output is for the log, which is currently not implemented for wgi
+

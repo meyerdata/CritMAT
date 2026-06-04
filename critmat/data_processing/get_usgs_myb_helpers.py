@@ -25,16 +25,17 @@ def extract_title_info(wb,sheet):
     #first a quick check if production data can be found in the sheet
     if re.search('WORLD.*PRODUCTION.*COUNTRY', a2, re.IGNORECASE):
         title_cell = 'A2'
+        title = a2
     elif re.search('WORLD.*PRODUCTION.*COUNTRY', combined, re.IGNORECASE):
         title_cell = 'A2'
+        title = combined
         edgecases.append('Long title')
     elif re.search('PRODUCTION.*WORLD', combined, re.IGNORECASE) and not re.search('CAPACITY', combined, re.IGNORECASE):
         title_cell = 'A2'
+        title = a2
         edgecases.append('Title missing keyword')
     else:
         return None
-
-    title = str(wb[sheet][title_cell].value)
 
     if found := re.search('(.*):', title): #The Material should be in the title like "IRON ORE:"
         title_material = found.group(1)
@@ -47,7 +48,7 @@ def extract_title_info(wb,sheet):
         title_material = None
 
     #Here we try to extract the category of production from the title, or the material name
-    found = re.search('WORLD (.*) PRODUCTION', title)
+    found = re.search('WORLD(.*) PRODUCTION', title)
     title_category = found.group(1) if found else None
     if not title_category:
         found = re.search('PRODUCTION(.*), BY COUNTRY', title)
@@ -255,6 +256,8 @@ def edgecaseCountries(liste):
     '''Quick fix that stuck around. Very often, country names come with "Continued" or "e" for
     "estimate" which felt easier to take care of explicitly rather than make edge cases in the standardize 
     function.'''
+    if len(liste) == 0:
+        return liste
     new_liste = []
     for i in range(len(liste)):
         word = liste[i]

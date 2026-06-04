@@ -46,7 +46,7 @@ def get_wmd_public(file, source, publish_year):
 
     workdf = standardize(workdf,quantity_to_t=True,cnames=True)
 
-    return workdf
+    return workdf, None #The second output is for the log, which is currently not implemented for WMD
 
 def get_wmd_full(file, source, publish_year):
     data = pd.read_excel(file)
@@ -93,7 +93,7 @@ def get_wmd_full(file, source, publish_year):
     workdf['publish_year'] = publish_year
     workdf['unit'] = 't'    
 
-    workdf.loc[workdf.index[workdf['material_name'].str.contains('(kg)')],'unit'] = 'kg'
+    workdf.loc[workdf.index[workdf['material_name'].str.contains('\(kg\)')],'unit'] = 'kg'
     workdf.loc[workdf.index[workdf['material_name'].str.contains('Mio. m3')],'unit'] = 'Mio m3'
 
     for material in materials_lookup:
@@ -116,21 +116,13 @@ def get_wmd_full(file, source, publish_year):
     # out_primary = out_primary.replace({'material_name': overwrite_mat})
     # out_refined = out_refined.replace({'material_name': overwrite_mat})
 
-    return workdf
+    return workdf, None #The second output is for the log, which is currently not implemented for WMD
 
 
-def get_wmd(folder, source, publish_year):
-    files = os.listdir(folder)
-    found_full_file = [file for file in files if 'WMD' in file and file.endswith('.xlsx')]
-    if len(found_full_file) == 0:
-        found_public_file = [file for file in files if '6.4' in file and file.endswith('.xlsx')]
-        if len(found_public_file) == 0:
-            raise Exception("Could not find any correct files, check the WMD_Readme.md for the correct file name and format")
-        elif len(found_public_file) > 1:
-            raise Exception("Found to many files with 6.4 in the name, check if some files are outdated and remove them from the folder")
-        else:
-             return get_wmd_public(folder + found_public_file[0], source, publish_year)
-    elif len(found_full_file) > 1:
-        raise Exception("Found to many files with WMD in the name, check if some files are outdated and remove them from the folder")
+def get_wmd(file, source, publish_year):
+    if 'WMD' in file and file.endswith('.xlsx'):
+        return get_wmd_full(file, source, publish_year)
+    elif '6.4' in file and file.endswith('.xlsx'):
+        return get_wmd_public(file, source, publish_year)
     else:
-        return get_wmd_full(folder + found_full_file[0], source, publish_year)
+        raise Exception("Could not find any correct files, check the WMD_Readme.md for the correct file name and format")

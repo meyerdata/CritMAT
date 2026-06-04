@@ -16,7 +16,8 @@ import argparse
 from email import parser
 import importlib
 import os
-
+import regex as re
+import pandas as pd
 from critmat.sources_config import SOURCE_REGISTRY
 
 
@@ -35,26 +36,38 @@ def convert_source(source_key, output_dir='output_data'):
     get_fn = getattr(module, config['get_fn'][0])
     extra_kwargs = {
         k: v for k, v in config.items()
-        if k not in {'folder', 'get_fn', 'target_model', 'source_name', 'prepare_fn'}
+        if k not in {'folder','file_pattern', 'get_fn', 'target_model', 'source_name', 'prepare_fn'}
     }
 
     ##THIS IS FOR A MORE DETAILED MANUAL OUTPUT
     if 'db_out' in extra_kwargs:
         del extra_kwargs['db_out']
 
-    df = get_fn(config['folder'],
-                source=config['source_name'],
-                **extra_kwargs)
-
-    if config['prepare_fn']:
-        prepare_module = importlib.import_module(config['get_fn'][1])
-        prepare_fn = getattr(prepare_module, config['prepare_fn'])
-        df = prepare_fn(df)
-
     os.makedirs(output_dir, exist_ok=True)
-    output_path = os.path.join(output_dir, f'{source_key}.csv')
-    df.to_csv(output_path, index=False)
 
+    full_df = pd.DataFrame()
+    full_log = pd.DataFrame()
+    for path, subdirs, files in os.walk(config['folder']):
+        for name in files:
+            if re.search(config['file_pattern'], name) and not name.startswith('~$'):
+                file = os.path.join(path, name)
+                print(name)
+
+                df, log = get_fn(file,
+                            source=config['source_name'],
+                            **extra_kwargs)
+
+                if config['prepare_fn']:
+                    prepare_module = importlib.import_module(config['get_fn'][1])
+                    prepare_fn = getattr(prepare_module, config['prepare_fn'])
+                    df = prepare_fn(df)
+
+                full_df = pd.concat([full_df, df])
+                full_log = pd.concat([full_log, log])
+
+    output_path = os.path.join(output_dir, f'{config['source_name']}.csv')
+    full_df.to_csv(output_path, index=False)
+    full_log.to_csv(os.path.join(output_dir, f'{config['source_name']}_log.csv'), index=False)
     print(f"Saved {source_key} to {output_path}")
 
 

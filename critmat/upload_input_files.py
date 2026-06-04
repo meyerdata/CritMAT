@@ -14,6 +14,7 @@ Usage:
 import argparse
 import importlib
 import os
+import regex as re
 
 from sqlalchemy import create_engine
 
@@ -39,18 +40,26 @@ def upload_source(source_key, connection):
     get_fn = getattr(module, config['get_fn'][0])
     extra_kwargs = {
         k: v for k, v in config.items()
-        if k not in {'folder', 'get_fn', 'target_model', 'source_name', 'prepare_fn'}
+        if k not in {'folder', 'file_pattern', 'get_fn', 'target_model', 'source_name', 'prepare_fn'}
     }
-    df = get_fn(config['folder'],
-                source=config['source_name'],
-                **extra_kwargs)
+    
+    found_files = []
+    for path, subdirs, files in os.walk(config['folder']):
+        for name in files:
+            if re.search(config['file_pattern'], name) and not name.startswith('~$'):
+                found_files.append(os.path.join(path, name))
 
-    if config['prepare_fn']:
-        prepare_module = importlib.import_module(config['get_fn'][1])
-        prepare_fn = getattr(prepare_module, config['prepare_fn'])
-        df = prepare_fn(df)
+    for file in found_files:
+        df, log = get_fn(file,
+                    source=config['source_name'],
+                    **extra_kwargs)
 
-    upload_dataframe(df, config['target_model'].__table__, connection)
+        if config['prepare_fn']:
+            prepare_module = importlib.import_module(config['get_fn'][1])
+            prepare_fn = getattr(prepare_module, config['prepare_fn'])
+            df = prepare_fn(df)
+
+        upload_dataframe(df, config['target_model'].__table__, connection)
 
     print(f"Completed {source_key}")
 
