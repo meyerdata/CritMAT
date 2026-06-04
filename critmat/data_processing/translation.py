@@ -106,8 +106,8 @@ def convert_to_t(values,units,problemunits):
     units.loc[units.str.contains('^mmt',case=False,na=False)] ='t'
     values.loc[units.str.contains('^gt',case=False,na=False)] *= 1_000_000_000
     units.loc[units.str.contains('^gt',case=False,na=False)] ='t'
-    units.loc[units.str.contains('^metr(\.)? t',case=False,na=False)] = 't'
-    units.loc[units.str.contains('^metr(\.)?t',case=False,na=False)] = 't'
+    units.loc[units.str.contains('^metr\(\.\)? t',case=False,na=False)] = 't'
+    units.loc[units.str.contains('^metr\(\.\)?t',case=False,na=False)] = 't'
 
     units.loc[units.str.contains('^tonnes',case=False,na=False)] = 't'
     values.loc[units.str.contains('^kilograms',case=False,na=False)] /= 1000
@@ -120,8 +120,8 @@ def convert_to_t(values,units,problemunits):
     units.loc[units.str.contains('^kct',case=False,na=False)] ='ct'
     values.loc[units.str.contains('^mct',case=False,na=False)] *= 1_000_000
     units.loc[units.str.contains('^mct',case=False,na=False)] ='ct'
-    values.loc[units.str.contains('^mio m(\^)?3',case=False,na=False)] *= 1_000_000
-    units.loc[units.str.contains('^mio m(\^)?3',case=False,na=False)] ='m3'
+    values.loc[units.str.contains('^mio m\(\^\)?3',case=False,na=False)] *= 1_000_000
+    units.loc[units.str.contains('^mio m\(\^\)?3',case=False,na=False)] ='m3'
     values.loc[units.str.contains('^mcm',case=False,na=False)] *= 1_000_000
     units.loc[units.str.contains('^mcm',case=False,na=False)] ='m3'
     values.loc[units.str.contains('^hl',case=False,na=False)] /= 10
