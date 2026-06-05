@@ -27,7 +27,7 @@ class Material(Base):
     __tablename__ = 'material'
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String, unique=True, nullable=False)
-    category = Column(String)
+    group = Column(String)
     eu_used_stage = Column(String)
     isrmis = Column(Boolean)
 
