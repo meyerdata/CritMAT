@@ -16,6 +16,7 @@ A Python package for processing and analyzing Critical Raw Material (CRM) data. 
 
 ### Data Sources
 - **Mineral Yearbook (MYB)** - United States Geological Survey (USGS)
+- **Mineral Commodity Summaries (MCS)** - United States Geological Survey (USGS)
 - **World Mining Data (WMD)** - Austrian Federal Ministry of Finance (BMF) 
 - **World mineral statistics data** - British Geological Survey (BGS)
 - **Comext Inernational trade** - Eurostat European Commission
