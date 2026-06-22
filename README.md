@@ -223,8 +223,9 @@ The `sources_config.py` file defines the `SOURCE_REGISTRY` which maps each data 
 
 ## Funding
 
-**Main funding:** Lower Saxony Ministry of Science and Culture (Germany) for the research project "Zukunftslabor Circular Economy".
-**Former funding:** This project has received funding from the European Union's Horizon Europe research and innovation programme under Grant Agreement No. 101091490.
+**Main funding:** This project receives funding from the Future Lab Circular Economy at the Center for Digital Innovations Lower Saxony (ZDIN). It is promoted by zukunft.niedersachsen, the joint funding program of the Lower Saxony Ministry of Science and Culture and the Volkswagen Foundation.
+
+**Former funding:** This project has received funding from the European Union's Horizon Europe research and innovation programme in the CIRC-UITS project under Grant Agreement No. 101091490.
 
 ## Author
 
