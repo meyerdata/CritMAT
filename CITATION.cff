@@ -15,15 +15,39 @@ authors:
     given-names: "Alexandra"
     affiliation: "DfKI"
     orcid: "https://orcid.org/0000-0003-1798-8679"
-
 keywords:
   - critical raw materials
   - supply chain risk
   - market concentration
   - CRM
   - supply chain assessment
-
 abstract: >
   CritMAT is a Python package for processing and analyzing Critical Raw Material (CRM) data.
   It extracts, standardizes, and analyzes raw materials data from multiple sources to support
   supply chain risk assessment and market concentration analysis.
+references:
+  - type: report
+    title: "Study on the Critical Raw Materials for the EU 2023: Final Report"
+    authors:
+      - name: "European Commission"
+    doi: "10.2873/725585"
+    year: 2023
+    url: "https://data.europa.eu/doi/10.2873/725585"
+  - type: report
+    title: "Raw Material Factsheets"
+    authors:
+      - name: "SCRREEN Project"
+    url: "https://scrreen.eu/crms-2023/"
+    year: 2023
+  - type: report
+    title: "Raw Materials Information System (RMIS) - Data Source Documentation"
+    authors:
+      - name: "European Commission Joint Research Centre"
+    url: "https://rmis.jrc.ec.europa.eu/uploads/rmp/info-dashboard.pdf"
+ - type: report
+    title: "Methodology for Establishing the EU List of Critical Raw Materials: Guidelines"
+    authors:
+      - name: "European Commission"
+    doi: "10.2873/769526"
+    year: 2017
+    url: "https://doi.org/10.2873/769526"
