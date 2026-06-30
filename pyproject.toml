@@ -8,7 +8,6 @@ dependencies = [
     "sqlalchemy>=2.0",
     "openpyxl>=3.0",
     "regex",
-    "tabula-py>=1.0",
 ]
 
 [build-system]
