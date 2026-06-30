@@ -1,27 +1,18 @@
 # Critical Material Assessment Toolkit (CritMAT)
-
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20489684.svg)](https://doi.org/10.5281/zenodo.20489683)
-
-
-
 
 A Python package for processing and analyzing Critical Raw Material (CRM) data. CritMAT extracts, standardizes, and analyzes raw materials data from multiple sources to support supply chain risk assessment and market concentration analysis.
 
 **Status:** Active development - core data processing and ingestion functions implemented.
-
 ## Features
-
-### Data Sources
-- **Mineral Yearbook (MYB)** - United States Geological Survey (USGS)
-- **Mineral Commodity Summaries (MCS)** - United States Geological Survey (USGS)
-- **World Mining Data (WMD)** - Austrian Federal Ministry of Finance (BMF) 
-- **World mineral statistics data** - British Geological Survey (BGS)
-- **Comext Inernational trade** - Eurostat European Commission
-- **World Governance Indicators (WGI)** -  World Bank Group
-- **EU Report 2023** - European Commission
+### Compatible Data Sources
+- United States Geological Survey (USGS): [Mineral Yearbook (MYB)](https://www.usgs.gov/centers/national-minerals-information-center/minerals-yearbook-metals-and-minerals)
+- United States Geological Survey (USGS): [Mineral Commodity Summaries (MCS)](https://www.usgs.gov/centers/national-minerals-information-center/mineral-commodity-summaries)
+- Austrian Federal Ministry of Finance (BMF): [World Mining Data (WMD)](https://www.world-mining-data.info/?World_Mining_Data___Mineral_Raw_Materials)
+- British Geological Survey (BGS): [World mineral statistics data](https://www.bgs.ac.uk/mineralsuk/statistics/world-mineral-statistics/world-mineral-statistics-archive/)
+- European Commission: [Comext database](https://ec.europa.eu/eurostat/web/international-trade-in-goods/database)
+- World Bank Group: [World Governance Indicators (WGI)](https://www.worldbank.org/en/publication/worldwide-governance-indicators)
 
 ### Analysis Functions (Work in progress)
 - **HHI Calculation** - Herfindahl-Hirschman Index for market concentration
@@ -41,24 +32,11 @@ A Python package for processing and analyzing Critical Raw Material (CRM) data. 
 - Triggers for data quality (auto-delete outdated records, prevent zero-quantity entries)
 - Views for supply risk calculation combining production, trade, governance, and assessment data
 
-## Supported Data Sources
-
-| Source | Type | Target Model |
-|--------|------|--------------|
-| USGS Mineral Yearbook | Production | FactMaterialProduction |
-| WMD | Production | FactMaterialProduction |
-| BGS 2025 | Production | FactMaterialProduction |
-| Eurostat Trade 2025 | Trade Flows | FactMaterialTradeFlow |
-| WGI | Governance | FactCountryWGI |
-| EU Report 2023 | Assessment | FactEUReport, FactTradeParameter |
-
 ## Installation
-
 ```bash
 pip install -e .
 python -m critmat.database.populate_database
 ```
-
 The first command installs the package and dependencies. The second command initializes the SQLite database with the schema and seeds it with reference data (countries, materials, sources).
 
 **Requirements:**
@@ -67,35 +45,28 @@ The first command installs the package and dependencies. The second command init
 - sqlalchemy >= 2.0
 - openpyxl >= 3.0
 - regex
-
+  
 **Environment Variables:**
 - `DATABASE_URL` - Database connection string (default: `sqlite:///database/crm.db`)
 
 ## Quickstart
-
 **Recommended files needed for a trial:**
 - Download `6.4.Production of Mineral Raw Materials...` from [World Mining Data](https://www.world-mining-data.info/?World_Mining_Data___Data_Section) → copy to `input_data/wmd/`
-
-- Run 
+- Run
 ```bash
 python -m critmat.upload_input_files --sources wmd
 python -m critmat.calculations.calc_hhi
 ```
-
-- *(Optional)* Download `Governance Estimates and Absolute Scores...` from [World Bank](https://www.worldbank.org/en/publication/worldwide-governance-indicators) → copy to `input_data/wgi/`
-
-- Run 
+- _(Optional)_ Download `Governance Estimates and Absolute Scores...` from [World Bank](https://www.worldbank.org/en/publication/worldwide-governance-indicators) → copy to `input_data/wgi/`
+- Run
 ```bash
 python -m critmat.upload_input_files --sources wgi
 python -m critmat.calculations.calc_hhi_wgi
 ```
 
 ## Usage
-
 ### 1. Prepare Data Files
-
 Place your source data files in the appropriate `input_data/` subdirectories:
-
 ```
 input_data/
 ├── usgs/                    # USGS Excel files (organized in material subfolders)
@@ -107,50 +78,38 @@ input_data/
 ```
 
 ### 2. Export Results to CSV
-
 ```bash
-python -m critmat.convert_input_files 
+python -m critmat.convert_input_files
 ```
 Process specific sources:
-
 ```bash
 python -m critmat.convert_input_files --sources usgs wmd bgs
 ```
-
 List registered sources:
-
 ```bash
 python -m critmat.convert_input_files --list
 ```
+
 ### 3. Upload Data to Database
-
 Process and load data from all sources:
-
 ```bash
 python -m critmat.upload_input_files
 ```
-
 Process specific sources:
-
 ```bash
 python -m critmat.upload_input_files --sources usgs wmd bgs
 ```
-
 List registered sources:
-
 ```bash
 python -m critmat.upload_input_files --list
 ```
 
 ### 4. Run Calculations (requires Database upload)
-
 ```bash
 python -m critmat.calculations.calc_hhi
-
 ```
 
 ## Project Structure
-
 ```
 CritMAT/
 ├── critmat/                # Main package
@@ -180,9 +139,7 @@ CritMAT/
 ```
 
 ## Architecture
-
 ### Database Schema
-
 **Dimension Tables:**
 - `source` - Data source definitions
 - `country` - Country names with EU membership and coordinates
@@ -197,36 +154,42 @@ CritMAT/
 - `fact_materialproduction_eusource` - EU source mappings
 
 ### Source Registry
-
 The `sources_config.py` file defines the `SOURCE_REGISTRY` which maps each data source to its processing function, target model, and source-specific parameters (folder paths, publish years, options).
 
-
 ## Development Status
-
 - Core database schema and models implemented
 - Data ingestion pipelines for major data sources working
 - Trade code mapping for Eurostat data implemented
 - Country and material name standardization implemented
-
+  
 **In progress:**
-
-- Rework tradecodes handeling 
+- Rework tradecodes handeling
 - EU Supply risk calculation translation (From SQL to python)
-
+  
 **Future:**
-
 - Rework production categories (primary/refined)
 - Rework primary keys of base tables to be readable (like ISO3 codes for countries)
 - Implement non-EU trade sources
 - Other Assessment Methods
 
-
 ## Funding
-
 **Main funding:** This project receives funding from the Future Lab Circular Economy at the Center for Digital Innovations Lower Saxony (ZDIN). It is promoted by zukunft.niedersachsen, the joint funding program of the Lower Saxony Ministry of Science and Culture and the Volkswagen Foundation.
 
 **Former funding:** This project has received funding from the European Union's Horizon Europe research and innovation programme in the CIRC-UITS project under Grant Agreement No. 101091490.
 
-## Author
+## Authors
 
-Ole Meyer (OFFIS e.V.), Alexandra Pehlken (DfKI)
+**Ole Meyer** (OFFIS e.V.) ole.meyer@offis.de
+  [![ORCID](https://img.shields.io/badge/ORCID-0000--0002--9964--5591-green)](https://orcid.org/0000-0002-9964-5591)  
+ 
+**Alexandra Pehlken** (DfKI) alexandra.pehlken@dfki.de
+  [![ORCID](https://img.shields.io/badge/ORCID-0000--0003--1798--8679-green)](https://orcid.org/0000-0003-1798-8679)  
+
+## References
+No data of the "Compatible Data Sources" is shared within this repository. This software references:
+- **European Commission**: [Study on the Critical Raw Materials for the EU 2023: Final Report](https://doi.org/10.2873/725585)
+- **European Commission**: [Methodology for Establishing the EU List of Critical Raw Materials: Guidelines](https://doi.org/10.2873/769526)
+- **SCRREEN Project**: [Raw Material Factsheets](https://scrreen.eu/crms-2023/)
+- **Raw Materials Information System (RMIS)**: [Data Source Documentation](https://rmis.jrc.ec.europa.eu/uploads/rmp/info-dashboard.pdf)
+
+_If you use CritMAT in your research, please cite both the software (see DOI badge above) and the respective data sources you utilized._
