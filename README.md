@@ -61,7 +61,7 @@ python -m critmat.calculations.calc_hhi
 - Run
 ```bash
 python -m critmat.upload_input_files --sources wgi
-python -m critmat.calculations.calc_hhi_wgi
+python -m critmat.calculations.calc_hhi --wgi
 ```
 
 ## Usage
@@ -105,22 +105,27 @@ python -m critmat.upload_input_files --list
 ```
 
 ### 4. Run Calculations (requires Database upload)
+Calculate the HHI for all uploaded material production data:
 ```bash
 python -m critmat.calculations.calc_hhi
 ```
-
+Calculate the WGI-weighted HHI for all uploaded material supply data:
+```bash
+python -m critmat.calculations.calc_hhi --wgi --eu_trade
+```
 ## Project Structure
 ```
 CritMAT/
 ├── critmat/                # Main package
 │   ├── calculations/       # HHI calculation functions
 │   │   ├── calc_hhi.py
-│   │   ├── calc_hhi_wgi.py
-│   │   └── calc_hhi_wgi_tp.py
+│   │   ├── hhi_basic.py
+│   │   ├── hhi_wgi.py
+│   │   └── hhi_wgi_tp.py
 │   ├── data_processing/    # Data extraction modules
 │   │   ├── get_usgs_myb.py
-│   │   ├── get_usgs_mcs.py
-│   │   ├── get_wmd.py / get_wmd_full.py
+│   │   ├── get_usgs_myb_helpers.py
+│   │   ├── get_wmd.py
 │   │   ├── get_bgs2025.py
 │   │   ├── get_eurostat_trade2025.py
 │   │   ├── get_wgi.py
@@ -168,7 +173,6 @@ The `sources_config.py` file defines the `SOURCE_REGISTRY` which maps each data 
   
 **Future:**
 - Rework production categories (primary/refined)
-- Rework primary keys of base tables to be readable (like ISO3 codes for countries)
 - Implement non-EU trade sources
 - Other Assessment Methods
 
