@@ -49,7 +49,7 @@ references:
     authors:
       - name: "European Commission Joint Research Centre"
     url: "https://rmis.jrc.ec.europa.eu/uploads/rmp/info-dashboard.pdf"
- - type: report
+  - type: report
     title: "Methodology for Establishing the EU List of Critical Raw Materials: Guidelines"
     authors:
       - name: "European Commission"
