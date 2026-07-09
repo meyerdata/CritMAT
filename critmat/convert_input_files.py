@@ -65,9 +65,12 @@ def convert_source(source_key, output_dir='output_data'):
                 full_df = pd.concat([full_df, df])
                 full_log = pd.concat([full_log, log])
 
-    output_path = os.path.join(output_dir, f'{config['source_name']}.csv')
+    if full_df.empty:
+        print(f"No valid data found for source '{source_key}'")
+        return
+    output_path = os.path.join(output_dir, f"{config['source_name']}.csv")
     full_df.to_csv(output_path, index=False)
-    full_log.to_csv(os.path.join(output_dir, f'{config['source_name']}_log.csv'), index=False)
+    full_log.to_csv(os.path.join(output_dir, f"{config['source_name']}_log.csv"), index=False)
     print(f"Saved {source_key} to {output_path}")
 
 
