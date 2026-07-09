@@ -72,7 +72,6 @@ def upload_all(connection):
 def main():
     parser = argparse.ArgumentParser(description='Upload input files to database')
     parser.add_argument('--sources', nargs='+', help='Source(s) to upload (default: all)')
-    parser.add_argument('--include-euassessment', action='store_true', help='Include additional data from EU REPORT annexes')
     parser.add_argument('--list', action='store_true', help='List registered sources and exit')
 
     args = parser.parse_args()
