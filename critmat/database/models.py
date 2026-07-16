@@ -127,17 +127,6 @@ class FactTradeParameter(Base):
     )
 
 
-class FactMaterialProductionEUSource(Base):
-    __tablename__ = 'fact_materialproduction_eusource'
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    material_id = Column(Integer, ForeignKey('material.id'), nullable=False)
-    category = Column(String, nullable=False)
-    source_id = Column(Integer, ForeignKey('source.id'), nullable=False)
-    __table_args__ = (
-        UniqueConstraint('material_id', 'source_id', 'category', name='unique_materialproduction_eusource'),
-    )
-
-
 # ============================================================
 # LOAD TRIGGERS AND VIEWS FROM SQL FILES
 # ============================================================

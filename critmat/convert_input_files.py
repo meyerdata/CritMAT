@@ -49,7 +49,7 @@ def convert_source(source_key, output_dir='output_data'):
     full_log = pd.DataFrame()
     for path, subdirs, files in os.walk(config['folder']):
         for name in files:
-            if re.search(config['file_pattern'], name) and not name.startswith('~$'):
+            if re.search(config['file_pattern'], name) and not name.startswith(r'~$'):
                 file = os.path.join(path, name)
                 print(name)
 

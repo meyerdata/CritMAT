@@ -23,41 +23,41 @@ def extract_title_info(wb,sheet):
     combined = a2 + a3
         
     #first a quick check if production data can be found in the sheet
-    if re.search('WORLD.*PRODUCTION.*COUNTRY', a2, re.IGNORECASE):
+    if re.search(r'WORLD.*PRODUCTION.*COUNTRY', a2, re.IGNORECASE):
         title_cell = 'A2'
         title = a2
-    elif re.search('WORLD.*PRODUCTION.*COUNTRY', combined, re.IGNORECASE):
+    elif re.search(r'WORLD.*PRODUCTION.*COUNTRY', combined, re.IGNORECASE):
         title_cell = 'A2'
         title = combined
         edgecases.append('Long title')
-    elif re.search('PRODUCTION.*WORLD', combined, re.IGNORECASE) and not re.search('CAPACITY', combined, re.IGNORECASE):
+    elif re.search(r'PRODUCTION.*WORLD', combined, re.IGNORECASE) and not re.search(r'CAPACITY', combined, re.IGNORECASE):
         title_cell = 'A2'
         title = a2
         edgecases.append('Title missing keyword')
     else:
         return None
 
-    if found := re.search('(.*):', title): #The Material should be in the title like "IRON ORE:"
+    if found := re.search(r'(.*):', title): #The Material should be in the title like "IRON ORE:"
         title_material = found.group(1)
-        if re.search('AND', title_material):  #Quick check if the sheet contains multiple materials
+        if re.search(r'AND', title_material):  #Quick check if the sheet contains multiple materials
             edgecases.append('Multiple Materials')
-    elif found := re.search('(.*), WORLD', title): #I only know of a single endgecase
+    elif found := re.search(r'(.*), WORLD', title): #I only know of a single endgecase
         title_material = found.group(1)
         edgecases.append('Weird Title Material')
     else:
         title_material = None
 
     #Here we try to extract the category of production from the title, or the material name
-    found = re.search('WORLD(.*) PRODUCTION', title)
+    found = re.search(r'WORLD(.*) PRODUCTION', title)
     title_category = found.group(1) if found else None
     if not title_category:
-        found = re.search('PRODUCTION(.*), BY COUNTRY', title)
+        found = re.search(r'PRODUCTION(.*), BY COUNTRY', title)
         title_category = found.group(1) if found else None
 
     #This is an old implementation of the category detection currently still necessary for the database
-    if re.search('REFINERY|PROCESSING|SECONDARY|SMELTER|ALUMINUM|ARSENIC|FERROCHROMIUM|FERROMANGANESE|PLANT|SILICON METAL', title, re.IGNORECASE):
+    if re.search(r'REFINERY|PROCESSING|SECONDARY|SMELTER|ALUMINUM|ARSENIC|FERROCHROMIUM|FERROMANGANESE|PLANT|SILICON METAL', title, re.IGNORECASE):
         db_category = 'refined'
-    elif re.search('MINE|ORE|BAUXITE|CHROMITE', title):
+    elif re.search(r'MINE|ORE|BAUXITE|CHROMITE', title):
         db_category = 'primary'
     else:   # everything that is not explicitly refining or primary is treated as primary either way
         db_category = 'primary'
@@ -112,14 +112,14 @@ def checkExcelIntegrity(wb):
                 overflow_counter = 0 #Reset the counter if a value was found
 
                 #This if checks for the unit usally found like "(metirc tons)"
-                if (not unit_cell) and title_cell and (re.search('tons',str(columnA_cell.value).lower()) or re.search('kilogram',str(columnA_cell.value).lower()) or re.search('carats',str(columnA_cell.value).lower())):
+                if (not unit_cell) and title_cell and (re.search(r'tons',str(columnA_cell.value).lower()) or re.search(r'kilogram',str(columnA_cell.value).lower()) or re.search(r'carats',str(columnA_cell.value).lower())):
                     unit_cell = columnA_cell.coordinate
                 #This checks for the start of the data usally "Country..." the length of this row is used to check if all year data is present later on
-                if (not datacolumns_cell) and title_cell and unit_cell and (title_cell !=  columnA_cell.coordinate) and re.search('countr',str(columnA_cell.value).lower()): 
+                if (not datacolumns_cell) and title_cell and unit_cell and (title_cell !=  columnA_cell.coordinate) and re.search(r'countr',str(columnA_cell.value).lower()): 
                     datacolumns_cell = columnA_cell.coordinate
                     datacolumns_length = sum(1 for cell in wb[sheet][columnA_cell.row] if cell.value is not None)
                 #Check to find the total end value (unused)
-                if (not grandtotal_cell) and datacolumns_cell and re.search('grand total',str(columnA_cell.value).lower()): 
+                if (not grandtotal_cell) and datacolumns_cell and re.search(r'grand total',str(columnA_cell.value).lower()): 
                     grandtotal_cell = columnA_cell.coordinate
                 #check if we find another title cell -> this implies the existence of multiple tables
                 if title in columnA_cell.value:
@@ -127,7 +127,7 @@ def checkExcelIntegrity(wb):
                 if cell_value and cell_value == 'W':
                     edgecases += ['Withheld data']   
                 # #Check if last value and not including Footnotes (usally containing "Estimate" or "Revised")
-                # if re.search('-- Zero',columnA_cell.value) or re.search('Estimate',columnA_cell.value) or re.search('Revised',columnA_cell.value) or re.search('rounded',columnA_cell.value): 
+                # if re.search(r'-- Zero',columnA_cell.value) or re.search(r'Estimate',columnA_cell.value) or re.search(r'Revised',columnA_cell.value) or re.search(r'rounded',columnA_cell.value): 
                 #     last_row = row_idx                
                 last_row = columnA_cell.row
             elif overflow_counter > 10:
@@ -241,9 +241,9 @@ def readAndProcess(path,sheet,skip_rows,lastrow,edgecases):
     data = data.drop(data.columns[dropcols],axis=1)
     pd.set_option('future.no_silent_downcasting', True)     	    # annoying. Like this I am "opting into future behavior" to suppress warnings
     data.replace(to_replace='--',value='0',inplace=True)
-    data.iloc[:,1:] = data.iloc[:,1:].replace(to_replace='\(\d+\)',value=np.nan,regex=True)                       # remove strange symbols 
-    #data.iloc[:,1:] = data.iloc[:,1:].replace(to_replace='W',value=999999,regex=True)                       # THIS IS TO Handel missing US DATA
-    data.iloc[:,1:] = data.iloc[:,1:].replace(to_replace='[a-zA-Z,.\(\)\-\`]*',value='',regex=True)                       # remove strange symbols 
+    data.iloc[:,1:] = data.iloc[:,1:].replace(to_replace=r'\(\d+\)',value=np.nan,regex=True)                       # remove strange symbols 
+    #data.iloc[:,1:] = data.iloc[:,1:].replace(to_replace=r'W',value=999999,regex=True)                       # THIS IS TO Handel missing US DATA
+    data.iloc[:,1:] = data.iloc[:,1:].replace(to_replace=r'[a-zA-Z,.\(\)\-\`]*',value='',regex=True)                       # remove strange symbols 
     data.iloc[:,1:] = data.iloc[:,1:].infer_objects(copy=False).replace(to_replace=r'^\s*$',value=np.nan,regex=True)    # NaN instead of empty strings and spaces                                                         
     data.iloc[:,1:] = data.iloc[:,1:].astype(float)     # THIS LINE CAN CAUSE ERRORS WITH PANDAS 3
     droprows = range(lastrow,data.shape[0])
@@ -288,7 +288,7 @@ def edgecaseYears(liste):
     for i in range(len(liste)):     
         year = str(liste[i])
         year = year.split('.',1)[0] #This removes pandas duplicate column styling (like ".1")
-        year = re.sub('[a-zA-Z,.\(\)\-]','',year)
+        year = re.sub(r'[a-zA-Z,.\(\)\-]','',year)
         year = year.strip()
         try: 
             new_liste.append(int(year))
@@ -335,7 +335,7 @@ def takeCareOfAllRegularMaterialsKeepInfos(df,data,sheet,indents,emptyrows,mater
 
         if 'Grand total' in row_name[0]:  
             break
-        if re.search('total',str(data.iloc[i,0]),re.IGNORECASE): 
+        if re.search(r'total',str(data.iloc[i,0]),re.IGNORECASE): 
             continue # If it is "total" data, we skip the row.         
 
         if i in emptyrows and (i+1 >= len(indents) or indents[i+1] < 1):
@@ -386,7 +386,7 @@ def takeCareOfAllRegularMaterialsKeepInfos(df,data,sheet,indents,emptyrows,mater
             }
 
             try: # if the next indent is 0 (so a new country starts), the production data must be in this row already (without submaterials)
-                if (indents[i+1] == 0) or (re.search('total',str(data.iloc[i+1,0]),re.IGNORECASE)): 
+                if (indents[i+1] == 0) or (re.search(r'total',str(data.iloc[i+1,0]),re.IGNORECASE)): 
                     ges['quantity'] = prod
             except: pass
         elif indents[i] >= 1: # if an indentation follows a non-indentation, we sum up with +=
@@ -416,7 +416,7 @@ def takeCareOfAllRegularMaterialsKeepInfos(df,data,sheet,indents,emptyrows,mater
                 continue
                 # print(f'Failed to calculate Total production {country_name} of {material} row {i} in sheet {sheet}')
             # # except for one ugly edge case where Türkiye's borate refining was inflated by crude ore.
-            # if material == 'boron' and country_name.iloc[0] == 'Turkey:' and not (re.search('refined',str(data.iloc[i,0]),re.IGNORECASE)):
+            # if material == 'boron' and country_name.iloc[0] == 'Turkey:' and not (re.search(r'refined',str(data.iloc[i,0]),re.IGNORECASE)):
             #     continue
         else: continue
     if ges:

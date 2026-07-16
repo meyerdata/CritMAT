@@ -10,6 +10,15 @@ For more information on the data itself see WMD_Readme.md in the input_data dire
 def get_wmd_public(file, source, publish_year):
     data = pd.read_excel(file, sheet_name=None, skiprows=1)
     materials = list(data.keys())
+
+    #This list is used to determine refined material data
+    refined_mat = ['Aluminium','Arsenic','Cadmium','Gallium','Germanium','Indium','Platinum','Selenium','Sulfur','Tellurium',"Palladium","Rhodium",'Rare Earths']
+
+    #This is an overwrite that is apllied at the end to assure correct assignment in the database
+    overwrite_mat = {'Bauxite': ['Aluminium'],'Iron': ['Iron Ore'],'Graphite': ['Natural Graphite'],
+                     'Rare Earths': ['Cerium','Dysprosium','Erbium','Europium','Gadolinium','Holmium','Lanthanum','Lutetium','Neodymium','Praseodymium','Samarium','Terbium','Thulium','Ytterbium','Yttrium']
+                     }
+
     workdf = pd.DataFrame()
     for currentmaterial in materials:
         currentdata = data[currentmaterial].copy()
@@ -32,8 +41,6 @@ def get_wmd_public(file, source, publish_year):
         if parentheses[i] != -1:
             workdf.loc[i,'material_name'] = workdf.loc[i,'material_name'][:parentheses[i]].strip()
 
-    #This list is used to determine refined material data
-    refined_mat = ['Aluminium','Arsenic','Cadmium','Gallium','Germanium','Indium','Platinum','Selenium','Sulfur','Tellurium',"Palladium","Rhodium",'Rare Earth']
     refmatidx = [idx for list in [workdf.index[workdf['material_name'].str.contains(material)].tolist() for material in refined_mat] for idx in list]
     workdf.loc[~workdf.index.isin(refmatidx),'category'] = 'primary'
     workdf.loc[refmatidx,'category'] = 'refined'
@@ -43,6 +50,12 @@ def get_wmd_public(file, source, publish_year):
     workdf['quantity'] = workdf['quantity'].astype(float).round()
     workdf['source_name'] = source
     workdf['publish_year'] = publish_year
+
+    for old_matname in overwrite_mat.keys():
+        for new_matname in overwrite_mat[old_matname]:
+            workdf = pd.concat([workdf,workdf[workdf['material_name'] == old_matname].copy().replace({'material_name': {old_matname:new_matname}})]).reset_index(drop=True)
+        if old_matname in workdf['material_name'].values:
+            workdf = workdf.drop(workdf[workdf['material_name'] == old_matname].index)
 
     workdf = standardize(workdf,quantity_to_t=True,cnames=True)
 
@@ -93,8 +106,8 @@ def get_wmd_full(file, source, publish_year):
     workdf['publish_year'] = publish_year
     workdf['unit'] = 't'    
 
-    workdf.loc[workdf.index[workdf['material_name'].str.contains('\(kg\)')],'unit'] = 'kg'
-    workdf.loc[workdf.index[workdf['material_name'].str.contains('Mio. m3')],'unit'] = 'Mio m3'
+    workdf.loc[workdf.index[workdf['material_name'].str.contains(r'\(kg\)')],'unit'] = 'kg'
+    workdf.loc[workdf.index[workdf['material_name'].str.contains(r'Mio. m3')],'unit'] = 'Mio m3'
 
     for material in materials_lookup:
         workdf['material_name'] = workdf['material_name'].apply(lambda x: material if material in x else x)

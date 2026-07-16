@@ -24,9 +24,9 @@ def get_usgs_myb(file,source,db_out=False,cut_outdated=False,cut_subtotal=False)
     df = pd.DataFrame() # df will be the end result
     error_log[file] = []
     
-    if file_year:= re.search('20[0-9][0-9]',file):
+    if file_year:= re.search(r'20[0-9][0-9]',file):
         file_year = int(file_year.group(0))
-    elif file_year:= re.search('0[0-9]',file):
+    elif file_year:= re.search(r'0[0-9]',file):
         file_year = int('20' + file_year.group(0))
     else:
         print(str(file) + " contains no year information skipping...")
@@ -118,11 +118,11 @@ def format_usgsarchive(df,source):
     print('post-processing...\n')
     df = df.drop(index=df.loc[pd.isna(df['country_name'])].index,axis=0)
     df = df.drop(index=df.loc[df['material_name']==''].index,axis=0)
-    df['country_name'] = df['country_name'].str.replace('\s*$','',regex=True) # like strip, throw out trailing spaces
+    df['country_name'] = df['country_name'].str.replace(r'\s*$','',regex=True) # like strip, throw out trailing spaces
     df = df.drop(index=df.loc[df['country_name']==''].index,axis=0)
-    df = df.drop(index=df.loc[df['country_name'].str.contains('total',case=False,regex=True)].index,axis=0)
-    df = df.drop(index=df.loc[df['country_name'].str.contains('country',case=False,regex=True)].index,axis=0)
-    df = df.drop(index=df.loc[df['country_name'].str.contains('footnotes',case=False,regex=True)].index,axis=0)
+    df = df.drop(index=df.loc[df['country_name'].str.contains(r'total',case=False,regex=True)].index,axis=0)
+    df = df.drop(index=df.loc[df['country_name'].str.contains(r'country',case=False,regex=True)].index,axis=0)
+    df = df.drop(index=df.loc[df['country_name'].str.contains(r'footnotes',case=False,regex=True)].index,axis=0)
     df['country_name'] = edgecaseCountries(df['country_name'].to_list())
     df['date_year'] = edgecaseYears(df['date_year'].to_list())
     df = df.drop(index=df.loc[pd.isna(df['country_name'])].index)  # important. Drop rows where the country, material, or year don't exist.

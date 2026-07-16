@@ -46,9 +46,13 @@ def upload_source(source_key, connection):
     found_files = []
     for path, subdirs, files in os.walk(config['folder']):
         for name in files:
-            if re.search(config['file_pattern'], name) and not name.startswith('~$'):
+            if re.search(config['file_pattern'], name) and not name.startswith(r'~$'):
                 found_files.append(os.path.join(path, name))
 
+    if found_files == []:
+        print(f"No files found for {source_key}")
+        return
+    
     for file in found_files:
         df, log = get_fn(file,
                     source=config['source_name'],
@@ -82,6 +86,10 @@ def main():
             print(f"  - {key}")
         return
 
+    db_path = DATABASE_URL.replace("sqlite:///", "")
+    if not os.path.exists(db_path):
+        print("Database file does not exist! Run critmat.database.populate_database first")
+        exit(1)
     engine = create_engine(DATABASE_URL)
     connection = engine.connect()
 
