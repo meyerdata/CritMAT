@@ -10,7 +10,7 @@ import os
 import pandas as pd
 from sqlalchemy import create_engine
 from critmat.database.config import DATABASE_URL
-from critmat.database.models import Base, FactEUReport, FactTradeParameter, Source, Country, Material, FactMaterialProductionEUSource
+from critmat.database.models import Base, FactEUReport, FactTradeParameter, Source, Country, Material
 from critmat.database.upload_dataframe import upload_dataframe
 
 
@@ -49,9 +49,6 @@ def seed_database():
 
     df = pd.read_csv(seed_dir + 'material.csv')
     upload_dataframe(df, Material.__table__, connection)
-
-    df = pd.read_csv(seed_dir + 'material_production_eu_source.csv')
-    upload_dataframe(df, FactMaterialProductionEUSource.__table__, connection)
 
     df = pd.read_csv(seed_dir + 'eureport_results.csv')
     upload_dataframe(df, FactEUReport.__table__, connection)

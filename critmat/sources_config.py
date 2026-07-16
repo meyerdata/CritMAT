@@ -50,22 +50,4 @@ SOURCE_REGISTRY = {
         'publish_year': 2025,
         'prepare_fn': None,
     },
-    # 'eureport_results': {
-    #     'folder': 'input_data/eureport/',
-    #     'get_fn': ('get_eureport', 'critmat.data_processing'),
-    #     'target_model': FactEUReport,
-    #     'source_name': 'EUREPORT',
-    #     'publish_year': 2025,
-    #     'table': 'results',
-    #     'prepare_fn': None,
-    # },
-    # 'eureport_tradeparameters': {
-    #     'folder': 'input_data/eureport/',
-    #     'get_fn': ('get_eureport', 'critmat.data_processing'),
-    #     'target_model': FactTradeParameter,
-    #     'source_name': 'EUREPORT',
-    #     'publish_year': 2025,
-    #     'table': 'tradeparameters',
-    #     'prepare_fn': None,
-    # },
 }

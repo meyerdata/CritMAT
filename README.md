@@ -4,7 +4,6 @@
 
 A Python package for processing and analyzing Critical Raw Material (CRM) data. CritMAT extracts, standardizes, and analyzes raw materials data from multiple sources to support supply chain risk assessment and market concentration analysis.
 
-**Status:** Active development - core data processing and ingestion functions implemented.
 ## Features
 ### Compatible Data Sources
 - United States Geological Survey (USGS): [Mineral Yearbook (MYB)](https://www.usgs.gov/centers/national-minerals-information-center/minerals-yearbook-metals-and-minerals)
@@ -18,6 +17,7 @@ A Python package for processing and analyzing Critical Raw Material (CRM) data. 
 - **HHI Calculation** - Herfindahl-Hirschman Index for market concentration
 - **WGI-Weighted HHI** - HHI adjusted for governance risk (penalizes supply from countries with poor governance)
 - **Trade Parameter HHI** - HHI with EU-specific trade dependency factors
+- **Supply Risk EU 2023** - Calculate the supply risk based on the 2023 EU report
 
 ### Data Standardization
 - Automatic country name standardization across sources
@@ -30,7 +30,7 @@ A Python package for processing and analyzing Critical Raw Material (CRM) data. 
 - Dimension tables: Source, Country, Material
 - Fact tables: MaterialProduction, MaterialTradeFlow, CountryWGI, EUReport, TradeParameter
 - Triggers for data quality (auto-delete outdated records, prevent zero-quantity entries)
-- Views for supply risk calculation combining production, trade, governance, and assessment data
+- Views for supply risk calculation creating EU supply and tradeparameter data
 
 ## Installation
 ```bash
@@ -49,22 +49,7 @@ The first command installs the package and dependencies. The second command init
 **Environment Variables:**
 - `DATABASE_URL` - Database connection string (default: `sqlite:///database/crm.db`)
 
-## Quickstart
-**Recommended files needed for a trial:**
-- Download `6.4.Production of Mineral Raw Materials...` from [World Mining Data](https://www.world-mining-data.info/?World_Mining_Data___Data_Section) → copy to `input_data/wmd/`
-- Run
-```bash
-python -m critmat.upload_input_files --sources wmd
-python -m critmat.calculations.calc_hhi
-```
-- _(Optional)_ Download `Governance Estimates and Absolute Scores...` from [World Bank](https://www.worldbank.org/en/publication/worldwide-governance-indicators) → copy to `input_data/wgi/`
-- Run
-```bash
-python -m critmat.upload_input_files --sources wgi
-python -m critmat.calculations.calc_hhi --wgi
-```
-
-## Usage
+## Basic Usage
 ### 1. Prepare Data Files
 Place your source data files in the appropriate `input_data/` subdirectories:
 ```
@@ -103,8 +88,7 @@ List registered sources:
 ```bash
 python -m critmat.upload_input_files --list
 ```
-
-### 4. Run Calculations (requires Database upload)
+### 4. Run Calculations Examples (requires Database upload)
 Calculate the HHI for all uploaded material production data:
 ```bash
 python -m critmat.calculations.calc_hhi
@@ -113,15 +97,35 @@ Calculate the WGI-weighted HHI for all uploaded material supply data:
 ```bash
 python -m critmat.calculations.calc_hhi --wgi --eu_trade
 ```
+Calculate the supply risk according to the EU in the timeframe [2023,2024]:
+```bash
+python -m critmat.calculations.calc_assessment --eu --timeframe 2023 2024
+```
+
+## Calculate EU Supply Risk Example
+Calculate the supply risk based on the 2023 EU report for the timeframe 2020-2024:
+- Download `6.4.Production of Mineral Raw Materials...` from [World Mining Data](https://www.world-mining-data.info/?World_Mining_Data___Data_Section) → copy to `input_data/wmd/`
+- Download `Governance Estimates and Absolute Scores...` from [World Bank](https://www.worldbank.org/en/publication/worldwide-governance-indicators) → copy to `input_data/wgi/`
+- Download the files `tariff_202052.7z`,`tariff_202152.7z`,`tariff_202252.7z`,`tariff_202352.7z`, and `tariff_202452.7z` from [Eurostat Bulk download](https://ec.europa.eu/eurostat/databrowser/bulk?lang=en&selectedTab=fileComext&breadcrumbFilter=COMEXT_DATA%2FPREFERENCES) → extract the dat-files and copy them to `input_data/eustat/`
+- _(Optional)_ Download desired `Minerals Yearbook` xlsx-files from [USGS Commodity Statistics](https://www.usgs.gov/centers/national-minerals-information-center/commodity-statistics-and-information) → copy to `input_data/usgs/MATERIAL_NAME/`
+- _(Optional)_ Download `World Mineral Statistics` as csv-files from [BGS](https://www.bgs.ac.uk/mineralsuk/statistics/world-mineral-statistics/world-mineral-statistics-data-download/) → copy to `input_data/bgs/`
+- Run
+```bash
+python -m critmat.upload_input_files
+python -m critmat.calculations.calc_assessment --eu --timeframe 2020 2021 2022 2023 2024
+```
+
 ## Project Structure
 ```
 CritMAT/
 ├── critmat/                # Main package
-│   ├── calculations/       # HHI calculation functions
+│   ├── calculations/       # HHI and assessment calculation functions
 │   │   ├── calc_hhi.py
 │   │   ├── hhi_basic.py
 │   │   ├── hhi_wgi.py
-│   │   └── hhi_wgi_tp.py
+│   │   ├── hhi_wgi_tp.py
+│   │   ├── calc_assessment.py
+│   │   └── supply_risk_eu.py
 │   ├── data_processing/    # Data extraction modules
 │   │   ├── get_usgs_myb.py
 │   │   ├── get_usgs_myb_helpers.py
@@ -166,10 +170,10 @@ The `sources_config.py` file defines the `SOURCE_REGISTRY` which maps each data 
 - Data ingestion pipelines for major data sources working
 - Trade code mapping for Eurostat data implemented
 - Country and material name standardization implemented
+- EU Supply risk calculation implemented
   
 **In progress:**
-- Rework tradecodes handeling
-- EU Supply risk calculation translation (From SQL to python)
+- Rework tradecode handeling
   
 **Future:**
 - Rework production categories (primary/refined)

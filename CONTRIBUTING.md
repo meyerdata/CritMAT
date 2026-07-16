@@ -1,6 +1,7 @@
 # Contributing to CritMAT
 
 Thank you for your interest in contributing to CritMAT!
+We are looking for collaboration to incorporate new data sources or assessments
 
 ## Reporting Issues
 
