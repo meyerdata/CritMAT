@@ -70,8 +70,8 @@ def understand_units(notes,identifier,sss=(0,40,1)):
 
     # remove this annoying detour as soon as pandas fixes the bug about extracting capture groups (https://github.com/pandas-dev/pandas/issues/56798) 
     # and instead go back to the way more readable version: 
-    # units.loc[notes.str.contains('(^|\s)ton',case=False,na=False)] += 't'
-    idx = notes.str.extract('(^|\s)ton') 
+    # units.loc[notes.str.contains(r'(^|\s)ton',case=False,na=False)] += 't'
+    idx = notes.str.extract(r'(^|\s)ton') 
     idx2 = pd.Series([False]*idx.shape[0])
     idx2.loc[~pd.isna(idx).values] = True
     units.loc[idx2.values] += 't'
@@ -96,38 +96,38 @@ def convert_to_t(values,units,problemunits):
 
     # Convert all values to one of the three base units (tons, cubic meters, carat) 
     # and also write this new unit in the corresponding places. 
-    values.loc[units.str.contains('^kg',case=False,na=False)] /= 1000
-    units.loc[units.str.contains('^kg',case=False,na=False)] ='t'
-    values.loc[units.str.contains('^kt',case=False,na=False)] *= 1000
-    units.loc[units.str.contains('^kt',case=False,na=False)] ='t'
-    values.loc[units.str.contains('^mt',case=False,na=False)] *= 1_000_000
-    units.loc[units.str.contains('^mt',case=False,na=False)] ='t'
-    values.loc[units.str.contains('^mmt',case=False,na=False)] *= 1_000_000
-    units.loc[units.str.contains('^mmt',case=False,na=False)] ='t'
-    values.loc[units.str.contains('^gt',case=False,na=False)] *= 1_000_000_000
-    units.loc[units.str.contains('^gt',case=False,na=False)] ='t'
-    units.loc[units.str.contains('^metr\(\.\)? t',case=False,na=False)] = 't'
-    units.loc[units.str.contains('^metr\(\.\)?t',case=False,na=False)] = 't'
+    values.loc[units.str.contains(r'^kg',case=False,na=False)] /= 1000
+    units.loc[units.str.contains(r'^kg',case=False,na=False)] ='t'
+    values.loc[units.str.contains(r'^kt',case=False,na=False)] *= 1000
+    units.loc[units.str.contains(r'^kt',case=False,na=False)] ='t'
+    values.loc[units.str.contains(r'^mt',case=False,na=False)] *= 1_000_000
+    units.loc[units.str.contains(r'^mt',case=False,na=False)] ='t'
+    values.loc[units.str.contains(r'^mmt',case=False,na=False)] *= 1_000_000
+    units.loc[units.str.contains(r'^mmt',case=False,na=False)] ='t'
+    values.loc[units.str.contains(r'^gt',case=False,na=False)] *= 1_000_000_000
+    units.loc[units.str.contains(r'^gt',case=False,na=False)] ='t'
+    units.loc[units.str.contains(r'^metr\(\.\)? t',case=False,na=False)] = 't'
+    units.loc[units.str.contains(r'^metr\(\.\)?t',case=False,na=False)] = 't'
 
-    units.loc[units.str.contains('^tonnes',case=False,na=False)] = 't'
-    values.loc[units.str.contains('^kilograms',case=False,na=False)] /= 1000
-    units.loc[units.str.contains('^kilograms',case=False,na=False)] ='t'
-    units.loc[units.str.contains('^Carats',case=False,na=False)] = 'ct'
-    values.loc[units.str.contains('^million cubic metres',case=False,na=False)] *= 1_000_000
-    units.loc[units.str.contains('^million cubic metres',case=False,na=False)] ='m3'
+    units.loc[units.str.contains(r'^tonnes',case=False,na=False)] = 't'
+    values.loc[units.str.contains(r'^kilograms',case=False,na=False)] /= 1000
+    units.loc[units.str.contains(r'^kilograms',case=False,na=False)] ='t'
+    units.loc[units.str.contains(r'^Carats',case=False,na=False)] = 'ct'
+    values.loc[units.str.contains(r'^million cubic metres',case=False,na=False)] *= 1_000_000
+    units.loc[units.str.contains(r'^million cubic metres',case=False,na=False)] ='m3'
 
-    values.loc[units.str.contains('^kct',case=False,na=False)] *= 1000
-    units.loc[units.str.contains('^kct',case=False,na=False)] ='ct'
-    values.loc[units.str.contains('^mct',case=False,na=False)] *= 1_000_000
-    units.loc[units.str.contains('^mct',case=False,na=False)] ='ct'
-    values.loc[units.str.contains('^mio m\(\^\)?3',case=False,na=False)] *= 1_000_000
-    units.loc[units.str.contains('^mio m\(\^\)?3',case=False,na=False)] ='m3'
-    values.loc[units.str.contains('^mcm',case=False,na=False)] *= 1_000_000
-    units.loc[units.str.contains('^mcm',case=False,na=False)] ='m3'
-    values.loc[units.str.contains('^hl',case=False,na=False)] /= 10
-    units.loc[units.str.contains('^hl',case=False,na=False)] = 'm3'
-    values.loc[units.str.contains('^l',case=False,na=False)] /= 1000
-    units.loc[units.str.contains('^l',case=False,na=False)] ='m3'
+    values.loc[units.str.contains(r'^kct',case=False,na=False)] *= 1000
+    units.loc[units.str.contains(r'^kct',case=False,na=False)] ='ct'
+    values.loc[units.str.contains(r'^mct',case=False,na=False)] *= 1_000_000
+    units.loc[units.str.contains(r'^mct',case=False,na=False)] ='ct'
+    values.loc[units.str.contains(r'^mio m\(\^\)?3',case=False,na=False)] *= 1_000_000
+    units.loc[units.str.contains(r'^mio m\(\^\)?3',case=False,na=False)] ='m3'
+    values.loc[units.str.contains(r'^mcm',case=False,na=False)] *= 1_000_000
+    units.loc[units.str.contains(r'^mcm',case=False,na=False)] ='m3'
+    values.loc[units.str.contains(r'^hl',case=False,na=False)] /= 10
+    units.loc[units.str.contains(r'^hl',case=False,na=False)] = 'm3'
+    values.loc[units.str.contains(r'^l',case=False,na=False)] /= 1000
+    units.loc[units.str.contains(r'^l',case=False,na=False)] ='m3'
         
     # Round to whole number but leave as float to accomodate NaNs
     values = values.astype(float).round(0) 
@@ -190,8 +190,8 @@ def standard_material_name(namedf,problemmats):
         return namedf,problemmats
     
     namedf.str.replace('(metall)','') # quick fix for aluminium
-    namedf = namedf.str.replace('[^ A-z]','',regex=True)
-    namedf = namedf.str.replace(' +',' ',regex=True)
+    namedf = namedf.str.replace(r'[^ A-z]','',regex=True)
+    namedf = namedf.str.replace(r' +',' ',regex=True)
     namedf = namedf.str.strip()
     uniquenames = namedf.unique()
     # Loop over all unique material names that were passed. 
@@ -373,96 +373,96 @@ def standard_country_name(ser,problemcountries,ccodes=False,cnames=False):
         'Serbia': ['SRB','XS','RS']
     }
 
-    countries = {'United States': ['^(?!.*islands).*united.?states|^u\\.?s\\.?a\\.?$|^u\\.?s\\.?$','vereinigte staaten','amerika'], 
-        'China': ['^(?!repub)(?!taiwan)(?!hong.*kong)(?!macao).*china(?!.*hong.*kong)(?!.*macao)|^PRC$'],
+    countries = {'United States': [r'^(?!.*islands).*united.?states|^u\\.?s\\.?a\\.?$|^u\\.?s\\.?$','vereinigte staaten','amerika'], 
+        'China': [r'^(?!repub)(?!taiwan)(?!hong.*kong)(?!macao).*china(?!.*hong.*kong)(?!.*macao)|^PRC$'],
         'Brazil': ['brasilien'], 'Canada': ['kanada'],'Australia': ['australien'], 
-        'India': ['^(?!\\D*(?:bassas))\\D*india(?!.*ocea)(?!na)','indien'], 
-        'United Arab Emirates': ['emirates|^u\\.?a\\.?e\\.?$|united.?arab.?em','vae', 'vereinigte arab'],
-        'Argentina': ['argentinien'], 'Portugal': ['portugal|portuguese'],
-        'United Kingdom': ['.*(united.?kingdom|britain|^u\\.?k\\.?$|gb)|england','gro[ss|ß]britannien'], 
-        'Germany': ['^(?!e|w)(fed)?.*germany(?!,? *e|,? *w)(,? *)(\\bfed)?','deutschland'], 
-        'France': ['^(?!.*\\bdep).*france|french.?republic|\\bgaul','frankreich'],
-        'Afghanistan': ['afghan'], 'Chile': ['\\bchile'], 'Spain': ['spanien'], 
+        'India': [r'^(?!\\D*(?:bassas))\\D*india(?!.*ocea)(?!na)','indien'], 
+        'United Arab Emirates': [r'emirates|^u\\.?a\\.?e\\.?$|united.?arab.?em','vae', 'vereinigte arab'],
+        'Argentina': ['argentinien'], 'Portugal': [r'portugal|portuguese'],
+        'United Kingdom': [r'.*(united.?kingdom|britain|^u\\.?k\\.?$|gb)|england',r'gro[ss|ß]britannien'], 
+        'Germany': [r'^(?!e|w)(fed)?.*germany(?!,? *e|,? *w)(,? *)(\\bfed)?','deutschland'], 
+        'France': [r'^(?!.*\\bdep).*france|french.?republic|\\bgaul','frankreich'],
+        'Afghanistan': ['afghan'], 'Chile': [r'\\bchile'], 'Spain': ['spanien'], 
         'Albania': ['albanien'], 'Algeria': ['algerien'], 'Angola': ['angola'], 
-        'Armenia': ['armenien'], 'Türkiye': ['t[ü|u]rk[i|e]y','Turkey', 't[ü|ue]rkei'], 
-        'Peru': ['peru'], 'Austria': ['[oe|ö]sterreich'], 'Azerbaijan': ['aserbaidschan'], 
-        'Bahamas': ['bahamas'], 'Bahrain': ['bahrain'], 'Bangladesh': ['bangladesh|^(?=.*east).*paki?stan','bangladesch'], 
-        'Barbados': ['barbados'], 'Belarus': ['belarus|byelo','wei[ss|ß]russland'], 
-        'Belgium': ['^(?!.*luxem).*belgium','belgien'], 'Belize': ['belize|^(?=.*british).*honduras'], 
-        'Benin': ['benin|dahome'], 'Bermuda': ['bermuda'], 'Bhutan': ['bhutan'], 
-        'Bolivia': ['bolivien'], 'Sweden': ['swedish|sweden(?!.*except)','schweden'], 
-        'Bosnia and Herzegovina': ['herzegovina|bosnia','bosnien|herzegowina'], 'Botswana': ['botswana|bechuana|botsuana'], 'Brunei Darussalam': ['brunei'], 'Bulgaria': ['bulgarien'], 
-        'Burkina Faso': ['burkina|\\bfaso|upper.?volta'], 'Burundi': ['burundi'], 
-        'Cabo Verde': ['(cabo|cape) *verde','kap verde'], 'Cambodia': ['cambodia|kampuchea|khmer|^p\\.?r\\.?k\\.?$','kambodscha'], 
+        'Armenia': ['armenien'], 'Türkiye': [r't[ü|u]rk[i|e]y','Turkey', r't[ü|ue]rkei'], 
+        'Peru': ['peru'], 'Austria': [r'[oe|ö]sterreich'], 'Azerbaijan': ['aserbaidschan'], 
+        'Bahamas': ['bahamas'], 'Bahrain': ['bahrain'], 'Bangladesh': [r'bangladesh|^(?=.*east).*paki?stan','bangladesch'], 
+        'Barbados': ['barbados'], 'Belarus': [r'belarus|byelo',r'wei[ss|ß]russland'], 
+        'Belgium': [r'^(?!.*luxem).*belgium','belgien'], 'Belize': [r'belize|^(?=.*british).*honduras'], 
+        'Benin': [r'benin|dahome'], 'Bermuda': ['bermuda'], 'Bhutan': ['bhutan'], 
+        'Bolivia': ['bolivien'], 'Sweden': [r'swedish|sweden(?!.*except)','schweden'], 
+        'Bosnia and Herzegovina': [r'herzegovina|bosnia',r'bosnien|herzegowina'], 'Botswana': [r'botswana|bechuana|botsuana'], 'Brunei Darussalam': ['brunei'], 'Bulgaria': ['bulgarien'], 
+        'Burkina Faso': [r'burkina|\\bfaso|upper.?volta'], 'Burundi': ['burundi'], 
+        'Cabo Verde': [r'(cabo|cape) *verde','kap verde'], 'Cambodia': [r'cambodia|kampuchea|khmer|^p\\.?r\\.?k\\.?$','kambodscha'], 
         'Cameroon': ['cameroon','kamerun'],'Colombia': ['Columbia','kolumbien'], 
-        'Congo Republic': ['^(?!.*\\bdem)(?!.*\\bdr)(?!.*kinshasa)(?!.*zaire)(?!.*belg)(?!.*l\\w{1,2}opoldville)(?!.*free)(^rep.*).*\\bcongo.*(?!.*\\bdem)(?!.*\\bdr).*|\\bwest.*congo|^congo[,;\\s]*(?!.*dem)rep.*?$|^congo$|\\bcongo.*brazza.*','Congo Rep\S'], 
-        'Costa Rica': ['costa.?rica'], 'Cote dIvoire': ['.*(ivoire|ivory)','elfenbeink[ü|ue]ste'], 
-        'Croatia': ['croatia|hrvatska','kroatien'], 'Cuba': ['\\bcuba','kuba'], 
-        'Cyprus': ['cyprus','zypern'], 'Guatemala': ['guatemala'], 'Czechia': ['^(?=.*rep).*czech.*|czechia|bohemia|.*czech.*','tschechi'], 
-        'Denmark': ['denmark','d[ä|ae]nemark'], 'Djibouti': ['djibouti','dschibuti'], 
-        'Dominica': ['dominica(?!n)'], 'Dominican Republic': ['domini[c|k]an'], 
-        'DR Congo': ['\\bdem.*congo|congo.*\\bdem|congo.*\\bdr|\\bdr.*congo|\\bd\\.?r\\.?c|\\bd\\.?r\\.?o\\.?c|\\br\\.?d\\.?c|belgian.?congo|congo.?free.?state|kinshasa|zaire|l\\w{1,2}opoldville|^the\\ congo$|^RDC$|^DROC$|\\bcongo.*dem.*','Congo Kinshasa', 'DR Congo', 'DR Kongo', 'kongo dem'], 
-        'Ecuador': ['equador'], 'Egypt': ['egypt','[ä|ae]gypten'], 'El Salvador': ['el.?salvador'], 
-        'Equatorial Guinea': ['guine.*eq|eq.*guine|^(?=.*span).*guinea','[ae|ä]quatorialguinea'], 
+        'Congo Republic': [r'^(?!.*\\bdem)(?!.*\\bdr)(?!.*kinshasa)(?!.*zaire)(?!.*belg)(?!.*l\\w{1,2}opoldville)(?!.*free)(^rep.*).*\\bcongo.*(?!.*\\bdem)(?!.*\\bdr).*|\\bwest.*congo|^congo[,;\\s]*(?!.*dem)rep.*?$|^congo$|\\bcongo.*brazza.*','Congo Rep\S'], 
+        'Costa Rica': [r'costa.?rica'], 'Cote dIvoire': [r'.*(ivoire|ivory)',r'elfenbeink[ü|ue]ste'], 
+        'Croatia': [r'croatia|hrvatska','kroatien'], 'Cuba': [r'\\bcuba','kuba'], 
+        'Cyprus': ['cyprus','zypern'], 'Guatemala': ['guatemala'], 'Czechia': [r'^(?=.*rep).*czech.*|czechia|bohemia|.*czech.*','tschechi'], 
+        'Denmark': ['denmark',r'd[ä|ae]nemark'], 'Djibouti': ['djibouti','dschibuti'], 
+        'Dominica': [r'dominica(?!n)'], 'Dominican Republic': [r'domini[c|k]an'], 
+        'DR Congo': [r'\\bdem.*congo|congo.*\\bdem|congo.*\\bdr|\\bdr.*congo|\\bd\\.?r\\.?c|\\bd\\.?r\\.?o\\.?c|\\br\\.?d\\.?c|belgian.?congo|congo.?free.?state|kinshasa|zaire|l\\w{1,2}opoldville|^the\\ congo$|^RDC$|^DROC$|\\bcongo.*dem.*','Congo Kinshasa', 'DR Congo', 'DR Kongo', 'kongo dem'], 
+        'Ecuador': ['equador'], 'Egypt': ['egypt',r'[ä|ae]gypten'], 'El Salvador': [r'el.?salvador'], 
+        'Equatorial Guinea': [r'guine.*eq|eq.*guine|^(?=.*span).*guinea',r'[ae|ä]quatorialguinea'], 
         'Eritrea': ['eritrea'], 'Estonia': ['estonia','estland'], 'Eswatini': ['swaziland'], 
-        'Ethiopia': ['ethiopia|abyssinia', 'ETH', '[ä|ae]thiopien'], 'Fiji': ['fidschi'], 
-        'Finland': ['finland','finnland'], 'French Guiana': ['^(?=.*french).*gu(i|y)ana|^(?!.*brit)(?!.*dut).*guiana','franz[ösisch]?[.]?[ ]?guyana'], 
-        'Gabon': ['gab(o|u)n','gabun'], 'Gambia': ['gambia','the gambia'], 
-        'Georgia': ['^(?!.*south).*georgia(?!.*US.*)','georgien'], 'Ghana': ['ghana|gold.?coast'], 
-        'Gibraltar': ['gibraltar'], 'Greece': ['greece|hellenic|hellas','griechenland'], 
-        'Greenland': ['greenland','gr[ö|oe]nland',], 'Grenada': ['grenada'], 'Guadeloupe': ['guadeloupe'], 
-        'Guinea': ['^(?!.*eq)(?!.*span)(?!.*bissau)(?!.*pap)(?!.*new)(?!p.*n.*).*guinea'], 
-        'Guinea-Bissau': ['^(.*portu).*gu(i|y)nea|gu(y|i)nea.*bissau'], 
-        'Guyana': ['^(?!.*fren)(?!.*dut).*\\bguyana|^(.*brit).*gu(i|y)ana'], 
-        'Haiti': ['(ha(i|\\xef|\\xc3\\xaf)ti)'], 'New Zealand': ['(new|n).*zealand','neuseeland'], 
-        'Honduras': ['^(?!.*brit).*honduras'], 'Hong Kong': ['.*hong.*kong|hksar'], 
+        'Ethiopia': [r'ethiopia|abyssinia', 'ETH', r'[ä|ae]thiopien'], 'Fiji': ['fidschi'], 
+        'Finland': ['finland','finnland'], 'French Guiana': [r'^(?=.*french).*gu(i|y)ana|^(?!.*brit)(?!.*dut).*guiana',r'franz[ösisch]?[.]?[ ]?guyana'], 
+        'Gabon': [r'gab(o|u)n','gabun'], 'Gambia': ['gambia','the gambia'], 
+        'Georgia': [r'^(?!.*south).*georgia(?!.*US.*)','georgien'], 'Ghana': [r'ghana|gold.?coast'], 
+        'Gibraltar': ['gibraltar'], 'Greece': [r'greece|hellenic|hellas','griechenland'], 
+        'Greenland': ['greenland',r'gr[ö|oe]nland',], 'Grenada': ['grenada'], 'Guadeloupe': ['guadeloupe'], 
+        'Guinea': [r'^(?!.*eq)(?!.*span)(?!.*bissau)(?!.*pap)(?!.*new)(?!p.*n.*).*guinea'], 
+        'Guinea-Bissau': [r'^(.*portu).*gu(i|y)nea|gu(y|i)nea.*bissau'], 
+        'Guyana': [r'^(?!.*fren)(?!.*dut).*\\bguyana|^(.*brit).*gu(i|y)ana'], 
+        'Haiti': [r'(ha(i|\\xef|\\xc3\\xaf)ti)'], 'New Zealand': [r'(new|n).*zealand','neuseeland'], 
+        'Honduras': [r'^(?!.*brit).*honduras'], 'Hong Kong': [r'.*hong.*kong|hksar'], 
         'Hungary': ['hungary','ungarn'], 'Iceland': ['iceland','island'], 
-        'Indonesia': ['indonesia','indonesien'], 'Iran': ['\\biran|persia'], 
-        'Iraq': ['\\biraq|mesopotamia', 'irak'], 'Ireland': ['^(?!.*north.*).*ireland','irland'], 
-        'Saudi Arabia': ['\\bsa\\w*.?arabia', 'saudi-arabien'], 'Israel': ['israel'], 
-        'Italy': ['.*italy|.*italia.*','italien'], 'Jamaica': ['jamaica','jamaika'], 
-        'Japan': ['japan'], 'Jersey': ['^(?!.*new).*jersey'], 'Jordan': ['jordan[ien]?'], 
-        'Kazakhstan': ['kazak','kazahkstan','kasachstan'], 'Kenya': ['kenya|british.?east.?africa|east.?africa.?prot','kenia'], 
+        'Indonesia': ['indonesia','indonesien'], 'Iran': [r'\\biran|persia'], 
+        'Iraq': [r'\\biraq|mesopotamia', 'irak'], 'Ireland': [r'^(?!.*north.*).*ireland','irland'], 
+        'Saudi Arabia': [r'\\bsa\\w*.?arabia', 'saudi-arabien'], 'Israel': ['israel'], 
+        'Italy': [r'.*italy|.*italia.*','italien'], 'Jamaica': ['jamaica','jamaika'], 
+        'Japan': ['japan'], 'Jersey': [r'^(?!.*new).*jersey'], 'Jordan': [r'jordan[ien]?'], 
+        'Kazakhstan': ['kazak','kazahkstan','kasachstan'], 'Kenya': [r'kenya|british.?east.?africa|east.?africa.?prot','kenia'], 
         'Kiribati': ['kiribati'], 'Kosovo': ['kosovo'], 'Kuwait': ['kuwait'], 
-        'Kyrgyz Republic': ['kyrgyz|kirghiz'], 'Laos': ['\\blaos?\\b'], 'Latvia': ['latvia','lettland'], 
-        'Lebanon': ['lebanon|lebanese','libanon'], 'Lesotho': ['lesotho|basuto'], 'Liberia': ['liberia'], 
+        'Kyrgyz Republic': [r'kyrgyz|kirghiz'], 'Laos': [r'\\blaos?\\b'], 'Latvia': ['latvia','lettland'], 
+        'Lebanon': [r'lebanon|lebanese','libanon'], 'Lesotho': [r'lesotho|basuto'], 'Liberia': ['liberia'], 
         'Libya': ['libya','libyen'], 'Liechtenstein': ['liechtenstein'], 'Lithuania': ['lithuania','litauen'], 
-        'Luxembourg': ['^(?!.*belg).*luxem', 'luxemburg'], 'Macau': ['.*maca(o|u)'], 
-        'North Macedonia': ['macedonia|^f\\.?y\\.?r\\.?o\\.?m\\.?$','(nord)?[ -]?mazedonien'], 
-        'Madagascar': ['madagascar|malagasy','madagaskar'], 'Malawi': ['malawi|nyasa'], 
-        'Malaysia': ['malaysia'], 'Maldives': ['maldive','malediwen'], 'Mali': ['\\bmali\\b'], 
-        'Malta': ['\\bmalta'], 'Mauritania': ['mauritania','mauretanien'], 'Mauritius': ['mauritius'], 
-        'Mexico': ['^(?!.*new).*mexi(?!.*city)','mexiko'], 'Moldova': ['moldov|b(a|e)ssarabia','moldau', 'moldawien'], 
-        'Monaco': ['monaco'], 'Mongolia': ['mongolia','mongolei'], 'Montenegro': ['^(?!.*serbia).*montenegro'], 
-        'Morocco': ['morocco|\\bmaroc','marokko'], 'Mozambique': ['mozambique','mosambik'], 
-        'Myanmar': ['myanmar|burma'], 'Namibia': ['nambia'], 'Nauru': ['nauru'], 'Nepal': ['nepal'], 
-        'Netherlands Antilles': ['^(?=.*\\bant).*(neth.*|dutch)', 'ANT'], 'Netherlands': ['^(?!.*\\bant)(?!.*\\bcarib).*netherlands','(die )?niederlande'], 
-        'Venezuela': ['venezuela'], 'New Caledonia': ['new.?caledonia'], 'Nicaragua': ['nicaragua'], 
-        'Niger': ['\\bniger(?!ia)'], 'Nigeria': ['nigeria'], 
-        'North Korea': ['^(?=.*dem).*\\bkorea|^(?=.*peo).*\\bkorea|^(?=.*nor).*\\bkorea|\\bd\\.?p\\.?r\\.|.*dpr.*|^n.*korea','Korea North','nordkorea'], 
-        'Norway': ['norway','norwegen'], 'Oman': ['\\boman|trucial'], 'Pakistan': ['^(?!.*east).*paki?stan'], 
-        'Palau': ['palau'], 'Palestine': ['palestin|\\bgaza|west.?bank'], 'Panama': ['panama'], 
-        'Papua New Guinea': ['\\bp.*\\bn.*\\bguin.*|^p\\.?n\\.?g\\.?$|new.?guinea','papua-neuguinea'], 
+        'Luxembourg': [r'^(?!.*belg).*luxem', 'luxemburg'], 'Macau': [r'.*maca(o|u)'], 
+        'North Macedonia': [r'macedonia|^f\\.?y\\.?r\\.?o\\.?m\\.?$',r'(nord)?[ -]?mazedonien'], 
+        'Madagascar': [r'madagascar|malagasy','madagaskar'], 'Malawi': [r'malawi|nyasa'], 
+        'Malaysia': ['malaysia'], 'Maldives': ['maldive','malediwen'], 'Mali': [r'\\bmali\\b'], 
+        'Malta': [r'\\bmalta'], 'Mauritania': ['mauritania','mauretanien'], 'Mauritius': ['mauritius'], 
+        'Mexico': [r'^(?!.*new).*mexi(?!.*city)','mexiko'], 'Moldova': [r'moldov|b(a|e)ssarabia','moldau', 'moldawien'], 
+        'Monaco': ['monaco'], 'Mongolia': ['mongolia','mongolei'], 'Montenegro': [r'^(?!.*serbia).*montenegro'], 
+        'Morocco': [r'morocco|\\bmaroc','marokko'], 'Mozambique': ['mozambique','mosambik'], 
+        'Myanmar': [r'myanmar|burma'], 'Namibia': ['nambia'], 'Nauru': ['nauru'], 'Nepal': ['nepal'], 
+        'Netherlands Antilles': [r'^(?=.*\\bant).*(neth.*|dutch)', 'ANT'], 'Netherlands': [r'^(?!.*\\bant)(?!.*\\bcarib).*netherlands',r'(die )?niederlande'], 
+        'Venezuela': ['venezuela'], 'New Caledonia': [r'new.?caledonia'], 'Nicaragua': ['nicaragua'], 
+        'Niger': [r'\\bniger(?!ia)'], 'Nigeria': ['nigeria'], 
+        'North Korea': [r'^(?=.*dem).*\\bkorea|^(?=.*peo).*\\bkorea|^(?=.*nor).*\\bkorea|\\bd\\.?p\\.?r\\.|.*dpr.*|^n.*korea','Korea North','nordkorea'], 
+        'Norway': ['norway','norwegen'], 'Oman': [r'\\boman|trucial'], 'Pakistan': [r'^(?!.*east).*paki?stan'], 
+        'Palau': ['palau'], 'Palestine': [r'palestin|\\bgaza|west.?bank'], 'Panama': ['panama'], 
+        'Papua New Guinea': [r'\\bp.*\\bn.*\\bguin.*|^p\\.?n\\.?g\\.?$|new.?guinea','papua-neuguinea'], 
         'Paraguay': ['paraguay'], 'Philippines': ['philippines','philippinen'], 
-        'Poland': ['poland','polen'], 'Puerto Rico': ['puerto.?rico'], 'Qatar': ['qatar', 'katar'], 
-        'Ukraine': ['ukrain'], 'Romania': ['r(o|u|ou)mania', 'rum[ä|ae]nien'], 'Russia': ['\\brussia', 'russland'], 
-        'Rwanda': ['rwanda','ruanda'], 'Zimbabwe': ['zimbabwe|^(?!.*northern).*rhodesia','simbabwe'],
-        'Senegal': ['senegal'], 'Serbia': ['^(?!.*monte).*serbia.*', 'serbien'], 'Seychelles': ['seychell'], 
-        'Sierra Leone': ['sierra'], 'Singapore': ['singapore','singapur'], 'Slovakia': ['^(?!.*cze).*slovak','slowakei'], 
+        'Poland': ['poland','polen'], 'Puerto Rico': [r'puerto.?rico'], 'Qatar': ['qatar', 'katar'], 
+        'Ukraine': ['ukrain'], 'Romania': [r'r(o|u|ou)mania', r'rum[ä|ae]nien'], 'Russia': [r'\\brussia', 'russland'], 
+        'Rwanda': ['rwanda','ruanda'], 'Zimbabwe': [r'zimbabwe|^(?!.*northern).*rhodesia','simbabwe'],
+        'Senegal': ['senegal'], 'Serbia': [r'^(?!.*monte).*serbia.*', 'serbien'], 'Seychelles': ['seychell'], 
+        'Sierra Leone': ['sierra'], 'Singapore': ['singapore','singapur'], 'Slovakia': [r'^(?!.*cze).*slovak','slowakei'], 
         'Slovenia': ['slovenia','slovenien'], 'Solomon Islands': ['solomon'], 'Somalia': ['somali'], 
-        'South Africa': ['\\bs(\\.|outh)(?!.*sahar).*africa|^r\\.?s\\.?a\\.?$','s[ü|ue]dafrika'], 
-        'South Korea': ['^(?!.*dem)(?!.*peo)(?!.*nor)(?!.*n)(?!.*dpr)(?!d\\.p\\.r).*\\bkorea|\\br\\.?o\\.?k\\b', 'Korea Republic','s(ü|ue)dkorea'], 
-        'South Sudan': ['\\bs\\w*.?sudan',], 'Sri Lanka': ['sri.?lanka|ceylon'], 'Sudan': ['^(?!.*\\bs(?!u)).*sudan'], 
-        'Suriname': ['surinam|dutch.?gu(i|y)ana'], 'Switzerland': ['switz|swiss','schweiz'], 'Syria': ['syrien'], 
-        'Taiwan': ['.*taiwan|.*taipei|.*formosa|^(?!.*\\bdem)(?!.*\\bpe)(?!.*\\bdr)(^rep.*).*\\bchina.*(?!.*\\bdem.*)(?!\\bpe.*)(?!.*\\bdr.*).*|^ROC$|^taiwan r\\.?o\\.?c\\.?$'],
-        'Tajikistan': ['tajik','tadschikistan'], 'Tanzania': ['tanzania(?!: zan.*)','tansania'],
-        'Thailand': ['thailand|\\bsiam'], 'Timor-Leste': ['^(?=.*leste).*timor|^(?=.*east).*timor','osttimor'],
-        'Togo': ['togo'], 'Trinidad and Tobago': ['trinidad|tobago'], 'Tunisia': ['tunisia','tunesien'],
-        'Turkmenistan': ['turk-?men'], 'Uganda': ['uganda'], 'Sao Tome and Principe': ['(S|s)ao (T|t)ome'],
-        'Aruba': ['^(?!.*bonaire).*\\baruba'], 'Uruguay': ['uruguay','Ururguay'], 'Uzbekistan': ['uzbek','usbekistan'],
-        'Vanuatu': ['vanuatu|new.?hebrides'], 'Vietnam': ['^((?!n|s|.*republic)|(?=.*socialist)).*viet.?nam(?! *,? *n| *,? *s)'],
-        'Central African Republic': ['central.?african.?rep.*','zentralafrikanische'], 'Chad': ['\\bchad','tschad'],
-        'Christmas Island': ['christmas'], 'Yemen': ['yemen','jemen'], 'Zambia': ['zambia|northern.?rhodesia','sambia'],
+        'South Africa': [r'\\bs(\\.|outh)(?!.*sahar).*africa|^r\\.?s\\.?a\\.?$',r's[ü|ue]dafrika'], 
+        'South Korea': [r'^(?!.*dem)(?!.*peo)(?!.*nor)(?!.*n)(?!.*dpr)(?!d\\.p\\.r).*\\bkorea|\\br\\.?o\\.?k\\b', 'Korea Republic',r's(ü|ue)dkorea'], 
+        'South Sudan': [r'\\bs\\w*.?sudan',], 'Sri Lanka': [r'sri.?lanka|ceylon'], 'Sudan': [r'^(?!.*\\bs(?!u)).*sudan'], 
+        'Suriname': [r'surinam|dutch.?gu(i|y)ana'], 'Switzerland': [r'switz|swiss','schweiz'], 'Syria': ['syrien'], 
+        'Taiwan': [r'.*taiwan|.*taipei|.*formosa|^(?!.*\\bdem)(?!.*\\bpe)(?!.*\\bdr)(^rep.*).*\\bchina.*(?!.*\\bdem.*)(?!\\bpe.*)(?!.*\\bdr.*).*|^ROC$|^taiwan r\\.?o\\.?c\\.?$'],
+        'Tajikistan': ['tajik','tadschikistan'], 'Tanzania': [r'tanzania(?!: zan.*)','tansania'],
+        'Thailand': [r'thailand|\\bsiam'], 'Timor-Leste': [r'^(?=.*leste).*timor|^(?=.*east).*timor','osttimor'],
+        'Togo': ['togo'], 'Trinidad and Tobago': [r'trinidad|tobago'], 'Tunisia': ['tunisia','tunesien'],
+        'Turkmenistan': [r'turk-?men'], 'Uganda': ['uganda'], 'Sao Tome and Principe': [r'(S|s)ao (T|t)ome'],
+        'Aruba': [r'^(?!.*bonaire).*\\baruba'], 'Uruguay': ['uruguay','Ururguay'], 'Uzbekistan': ['uzbek','usbekistan'],
+        'Vanuatu': [r'vanuatu|new.?hebrides'], 'Vietnam': [r'^((?!n|s|.*republic)|(?=.*socialist)).*viet.?nam(?! *,? *n| *,? *s)'],
+        'Central African Republic': [r'central.?african.?rep.*','zentralafrikanische'], 'Chad': [r'\\bchad','tschad'],
+        'Christmas Island': ['christmas'], 'Yemen': ['yemen','jemen'], 'Zambia': [r'zambia|northern.?rhodesia','sambia'],
         'Others': ['oth','Other countries']
     }
 
@@ -478,8 +478,8 @@ def standard_country_name(ser,problemcountries,ccodes=False,cnames=False):
     ser = ser.str.replace("é","e")
     ser = ser.str.replace("ô","o")
     ser = ser.str.replace("saint","st.")
-    ser = ser.str.replace('[^ A-zü]','',regex=True)
-    ser = ser.str.replace(' +',' ',regex=True)
+    ser = ser.str.replace(r'[^ A-zü]','',regex=True)
+    ser = ser.str.replace(r' +',' ',regex=True)
     ser = ser.str.strip()
 
     ser = ser.str.split(" and ").str[0]
