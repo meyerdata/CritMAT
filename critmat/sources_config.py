@@ -3,7 +3,7 @@ from critmat.database.models import *
 SOURCE_REGISTRY = {
     'usgs': {
         'folder': 'input_data/usgs/',
-        'file_pattern': '^myb.*\.xlsx$',
+        'file_pattern': r'^myb.*\.xlsx$',
         'get_fn': ('get_usgs_myb', 'critmat.data_processing'),
         'target_model': FactMaterialProduction,
         'source_name': 'USGS_myb',
@@ -14,7 +14,7 @@ SOURCE_REGISTRY = {
     },
     'wmd': {
         'folder': 'input_data/wmd/',
-        'file_pattern': '^(WMD|6.4).*\.xlsx$',
+        'file_pattern': r'^(WMD|6.4).*\.xlsx$',
         'get_fn': ('get_wmd', 'critmat.data_processing'),
         'target_model': FactMaterialProduction,
         'source_name': 'WMD',
@@ -23,7 +23,7 @@ SOURCE_REGISTRY = {
     },
     'bgs': {
         'folder': 'input_data/bgs/',
-        'file_pattern': '.*\.csv$',
+        'file_pattern': r'.*\.csv$',
         'get_fn': ('get_bgs2025', 'critmat.data_processing'),
         'target_model': FactMaterialProduction,
         'source_name': 'BGS',
@@ -33,7 +33,7 @@ SOURCE_REGISTRY = {
     },
     'eustat': {
         'folder': 'input_data/eustat/',
-        'file_pattern': '^tariff.*\.dat$',
+        'file_pattern': r'^tariff.*\.dat$',
         'get_fn': ('get_eurostat_trade2025', 'critmat.data_processing'),
         'target_model': FactMaterialTradeFlow,
         'source_name': 'EUST',
@@ -43,7 +43,7 @@ SOURCE_REGISTRY = {
     },
     'wgi': {
         'folder': 'input_data/wgi/',
-        'file_pattern': '^wgidataset_with_sourcedata.*\.xlsx$',
+        'file_pattern': r'^wgidataset_with_sourcedata.*\.xlsx$',
         'get_fn': ('get_wgi', 'critmat.data_processing'),
         'target_model': FactCountryWGI,
         'source_name': 'WB',
