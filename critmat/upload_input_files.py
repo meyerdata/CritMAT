@@ -86,6 +86,10 @@ def main():
             print(f"  - {key}")
         return
 
+    db_path = DATABASE_URL.replace("sqlite:///", "")
+    if not os.path.exists(db_path):
+        print("Database file does not exist! Run critmat.database.populate_database first")
+        exit(1)
     engine = create_engine(DATABASE_URL)
     connection = engine.connect()
 
