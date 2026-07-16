@@ -12,11 +12,11 @@ def get_wmd_public(file, source, publish_year):
     materials = list(data.keys())
 
     #This list is used to determine refined material data
-    refined_mat = ['Aluminium','Arsenic','Cadmium','Gallium','Germanium','Indium','Platinum','Selenium','Sulfur','Tellurium',"Palladium","Rhodium",'Rare Earth']
+    refined_mat = ['Aluminium','Arsenic','Cadmium','Gallium','Germanium','Indium','Platinum','Selenium','Sulfur','Tellurium',"Palladium","Rhodium",'Rare Earths']
 
     #This is an overwrite that is apllied at the end to assure correct assignment in the database
     overwrite_mat = {'Bauxite': ['Aluminium'],'Iron': ['Iron Ore'],'Graphite': ['Natural Graphite'],
-                     'Rare Earth': ['Cerium','Dysprosium','Erbium','Europium','Gadolinium','Holmium','Lanthanum','Lutetium','Neodymium','Praseodymium','Samarium','Terbium','Thulium','Ytterbium','Yttrium']
+                     'Rare Earths': ['Cerium','Dysprosium','Erbium','Europium','Gadolinium','Holmium','Lanthanum','Lutetium','Neodymium','Praseodymium','Samarium','Terbium','Thulium','Ytterbium','Yttrium']
                      }
 
     workdf = pd.DataFrame()
