@@ -13,7 +13,7 @@ A Python package for processing and analyzing Critical Raw Material (CRM) data. 
 - European Commission: [Comext database](https://ec.europa.eu/eurostat/web/international-trade-in-goods/database)
 - World Bank Group: [World Governance Indicators (WGI)](https://www.worldbank.org/en/publication/worldwide-governance-indicators)
 
-### Analysis Functions (Work in progress)
+### Analysis Functions
 - **HHI Calculation** - Herfindahl-Hirschman Index for market concentration
 - **WGI-Weighted HHI** - HHI adjusted for governance risk (penalizes supply from countries with poor governance)
 - **Trade Parameter HHI** - HHI with EU-specific trade dependency factors
