@@ -13,9 +13,6 @@ def upload_dataframe(sourcedf, sql_table, connection, print_error=False):
     print('##############################################################################')
     print('Preparing ' + str(sql_table) + ' data for upload...')
 
-    upload_count = 0
-    fail_count1 = 0
-    fail_count2 = 0
     sourcedf = pd.DataFrame(sourcedf)
 
     #Pull basetables
@@ -59,40 +56,33 @@ def upload_dataframe(sourcedf, sql_table, connection, print_error=False):
         except (AttributeError, TypeError):
             pass
 
+    upload_count = 0
+    error_counts = {
+        'NULL_CONSTRAINT': 0,
+        'UNIQUE_CONSTRAINT': 0,
+        'OTHER': 0,
+    }
+    failed_records = []
+
     for idx, row in sourcedf.iterrows():
         #Convert each non-NaN row of the dataframe to a dict and try to upload
         #NaN is excluded as most sql datatypes dont support it and NaN holds no information
         write_dict = row[~row.isna()].to_dict()
-
-        #THIS IS NOT PROVEN TO FUNCTION PROPERLY, BUT SHOULD BE SEEN AS THE FIRST IDEA OF A POTENTIAL FUNCTION
-        #CURRENTLY THE SAME FUNCTION IS HANDELD BY A TRIGGER
-        # update_check_query = select(sql_table)
-        # for key, value in write_dict.items():
-        #     if key != 'publish_date':
-        #         update_check_query = update_check_query.where(getattr(sql_table.c, key) == value)
-
-        #     existing_record = connection.execute(update_check_query).fetchone()
-        
-        #     if existing_record:
-        #         # Compare dates and delete the older one
-        #         if existing_record .publish_date < write_dict['publish_date']:
-        #             connection.delete(existing_record)
-        #             connection.commit()  # commit deletion
-
-        #     # Insert the new record
-        #     connection.add(write_dict)
-        #     connection.commit() 
         try:
             connection.execute(insert(sql_table).values(write_dict))
             connection.commit()
             upload_count += 1
         except IntegrityError as ex:
+            if 'NOT NULL constraint failed' in str(ex.orig):
+                error_counts['NULL_CONSTRAINT'] += 1
+            elif 'UNIQUE constraint failed' in str(ex.orig):
+                error_counts['UNIQUE_CONSTRAINT'] += 1
+            else:
+                error_counts['OTHER'] += 1
             if print_error:
                 print(ex.orig)
                 print(ex.statement)
             connection.rollback()
-            fail_count1 += 1
 
-    print('Uploaded ' + str(upload_count) + ' new data points to table ' + str(sql_table))
-    print('Failed to upload ' + str(fail_count1) + ' new data points to table ' + str(sql_table) + ' due to unique constrains')
-
+    print(f"Uploaded {upload_count} new data points to table {sql_table}")
+    print(f"Failed: {error_counts['UNIQUE_CONSTRAINT']} unique, {error_counts['NULL_CONSTRAINT']} null, {error_counts['OTHER']} other")

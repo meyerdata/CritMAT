@@ -23,7 +23,7 @@ from critmat.database.upload_dataframe import upload_dataframe
 from critmat.sources_config import SOURCE_REGISTRY
 
 
-def upload_source(source_key, connection):
+def upload_source(source_key, connection, print_error=False):
     config = SOURCE_REGISTRY.get(source_key)
     if config is None:
         raise KeyError(f"Source '{source_key}' not found in any registry")
@@ -63,7 +63,7 @@ def upload_source(source_key, connection):
             prepare_fn = getattr(prepare_module, config['prepare_fn'])
             df = prepare_fn(df)
 
-        upload_dataframe(df, config['target_model'].__table__, connection)
+        upload_dataframe(df, config['target_model'].__table__, connection, print_error=print_error)
 
     print(f"Completed {source_key}")
 
@@ -77,6 +77,7 @@ def main():
     parser = argparse.ArgumentParser(description='Upload input files to database')
     parser.add_argument('--sources', nargs='+', help='Source(s) to upload (default: all)')
     parser.add_argument('--list', action='store_true', help='List registered sources and exit')
+    parser.add_argument('--upload_error', action='store_true', help='Display detailed upload errors (default: False)')
 
     args = parser.parse_args()
 
@@ -97,13 +98,13 @@ def main():
         if args.sources:
             for source in args.sources:
                 if source in SOURCE_REGISTRY:
-                    upload_source(source, connection)
+                    upload_source(source, connection, print_error=args.upload_error)
                 else:
                     print(f"Unknown source: '{source}' - skipping")
         else:
             sources_to_process = list(SOURCE_REGISTRY.keys())
             for source_key in sources_to_process:
-                upload_source(source_key, connection)
+                upload_source(source_key, connection, print_error=args.upload_error)
     finally:
         connection.close()
 
